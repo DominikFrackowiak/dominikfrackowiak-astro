@@ -1,23 +1,48 @@
+---
+interface Props {
+	title: string
+}
+import '../styles/global.css'
+
+const { title } = Astro.props
+---
+
 <!doctype html>
-<html lang="en">
+<html lang='en' data-theme='dark'>
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta charset='UTF-8' />
+		<meta name='viewport' content='width=device-width' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<link rel='icon' href='/favicon.ico' />
+		<meta name='generator' content={Astro.generator} />
+		<title>Dominik Frackowiak | {title}</title>
 	</head>
-	<body>
-		<slot />
+	<body class='bg-white dark:bg-[#1f1d1d]'>
+		<main>
+			<button id='theme-switcher'> Dark/light mode </button>
+			<slot />
+		</main>
 	</body>
 </html>
+<script>
+	const themeSwitcher = document.querySelector('#theme-switcher')
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
+	const applyTheme = () => {
+		document.documentElement.classList.toggle(
+			'dark',
+			localStorage.theme === 'dark' ||
+				(!('theme' in localStorage) &&
+					window.matchMedia('(prefers-color-scheme: dark)').matches)
+		)
 	}
-</style>
+
+	applyTheme()
+
+	themeSwitcher?.addEventListener('click', () => {
+		const isDark = document.documentElement.classList.contains('dark')
+
+		localStorage.theme = isDark ? 'light' : 'dark'
+
+		applyTheme()
+	})
+</script>
