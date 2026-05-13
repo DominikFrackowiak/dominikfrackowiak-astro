@@ -1,0 +1,23 @@
+<div class='fixed top-0 left-0 w-screen h-0.5 bg-dark dark:bg-accent'>
+	<div class='scroll-indicator absolute top-0 left-0 h-full bg-custom-gray'>
+	</div>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const scrollIndicator = document.querySelector('.scroll-indicator') as HTMLElement
+
+		if (!scrollIndicator) return
+
+		document.addEventListener('scroll', () => {
+			const scrollTop = window.scrollY
+
+			const documentHeight =
+				document.documentElement.scrollHeight - window.innerHeight
+
+			const scrollProgress = (scrollTop / documentHeight) * 100
+
+			scrollIndicator.style.width = `${scrollProgress}%`
+		})
+	})
+</script>

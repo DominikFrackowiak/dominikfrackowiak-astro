@@ -1,0 +1,1 @@
+https://docs.astro.build/en/recipes/i18n/
