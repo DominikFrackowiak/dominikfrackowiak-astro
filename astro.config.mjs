@@ -4,8 +4,6 @@ import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import tailwindcss from '@tailwindcss/vite';
 
-import react from '@astrojs/react';
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const site = process.env.SITE_URL ?? 'https://dominikfrackowiak.com';
@@ -27,6 +25,4 @@ export default defineConfig({
     defaultLocale: 'en',
     locales: ['en', 'es', 'pl']
   },
-
-  integrations: [react()],
 });

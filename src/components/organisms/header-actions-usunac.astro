@@ -1,0 +1,32 @@
+---
+import EarthIcon from '@/components/atoms/earth-icon.astro'
+import Dropdown from '@/components/molecules/dropdown.astro'
+---
+
+<div class='flex items-center gap-4'>
+	<Dropdown>
+		<EarthIcon slot='trigger' />
+		<ul class='flex flex-col items-center gap-2'>
+			<li>English</li>
+			<li>Polski</li>
+			<li>Español</li>
+		</ul>
+	</Dropdown>
+	<button type='button' class='text-light' data-theme-toggle>
+		Theme
+	</button>
+</div>
+
+<script>
+	const applyTheme = (theme: 'dark' | 'light') => {
+		document.documentElement.classList.toggle('dark', theme === 'dark')
+		localStorage.theme = theme
+	}
+
+	document.querySelectorAll('[data-theme-toggle]').forEach((trigger) => {
+		trigger.addEventListener('click', () => {
+			const isDark = document.documentElement.classList.contains('dark')
+			applyTheme(isDark ? 'light' : 'dark')
+		})
+	})
+</script>

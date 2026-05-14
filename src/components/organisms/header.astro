@@ -2,14 +2,14 @@
 import Logo from '@/components/atoms/logo.astro'
 import CenteringWrapper from '@/components/atoms/centering-wrapper.astro'
 import ScrollIndicator from '../molecules/scroll-indicator.astro'
-import HeaderActions from './header-actions.tsx'
+// import HeaderActions from './header-actions.astro'
 ---
 
 <header class='fixed top-0 left-0 w-screen bg-dark dark:bg-accent py-3.5'>
 	<ScrollIndicator />
 	<CenteringWrapper className='justify-between items-center'>
 		<Logo />
-		<HeaderActions client:load />
+		<!-- <HeaderActions /> -->
 	</CenteringWrapper>
 </header>
 
