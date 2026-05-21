@@ -1,0 +1,125 @@
+---
+type Props = {
+	class?: string
+	lineCount?: number
+	amplitude?: number
+	wavelength?: number
+	speed?: number
+	strokeWidth?: number
+	tilt?: number
+}
+
+const {
+	class: className,
+	lineCount = 36,
+	amplitude = 28,
+	wavelength = 190,
+	speed = 0.8,
+	strokeWidth = 1,
+	tilt = 0.16,
+} = Astro.props
+
+const width = 1200
+const height = 700
+---
+
+<svg
+	data-topographic-wave
+	data-line-count={lineCount}
+	data-amplitude={amplitude}
+	data-wavelength={wavelength}
+	data-speed={speed}
+	data-tilt={tilt}
+	viewBox={`0 0 ${width} ${height}`}
+	class={className}
+	fill='none'
+	xmlns='http://www.w3.org/2000/svg'
+	aria-label='Animated topographic wave'
+	role='img'
+	preserveAspectRatio='xMidYMid meet'
+>
+	<rect width={width} height={height} fill='white'></rect>
+
+	<g
+		stroke='currentColor'
+		stroke-width={strokeWidth}
+		stroke-linecap='round'
+		opacity='0.96'
+	>
+		{
+			Array.from({ length: lineCount }).map((_, i) => (
+				<path data-wave-path data-index={i} />
+			))
+		}
+	</g>
+</svg>
+
+<script>
+	const svgs = document.querySelectorAll('[data-topographic-wave]')
+
+	svgs.forEach(svg => {
+		const width = 1200
+		const height = 700
+		const paddingX = 40
+		const paddingY = 60
+		const samples = 120
+
+		const lineCount = Number(svg.dataset.lineCount)
+		const amplitude = Number(svg.dataset.amplitude)
+		const wavelength = Number(svg.dataset.wavelength)
+		const speed = Number(svg.dataset.speed)
+		const tilt = Number(svg.dataset.tilt)
+
+		const usableHeight = height - paddingY * 2
+		const spacing = usableHeight / (lineCount - 1)
+		const xStep = (width - paddingX * 2) / samples
+		const paths = svg.querySelectorAll('[data-wave-path]')
+
+		let start = null
+		let rafId = null
+
+		function getPath(i, time) {
+			const motion = time * speed
+			const centerBias = lineCount / 2
+
+			const yBase = paddingY + i * spacing
+			const distanceFromCenter = (i - centerBias) / centerBias
+			const lineAmp = amplitude * (1 - Math.abs(distanceFromCenter) * 0.22)
+			const depthScale = 1 - Math.abs(distanceFromCenter) * tilt
+			const localPhase = i * 0.24
+
+			let d = ''
+
+			for (let s = 0; s <= samples; s++) {
+				const x = paddingX + s * xStep
+
+				const waveA = Math.sin(x / wavelength + motion + localPhase) * lineAmp
+				const waveB =
+					Math.sin(x / (wavelength * 0.55) - motion * 0.6 + i * 0.08) *
+					(lineAmp * 0.18)
+				const waveC =
+					Math.cos(x / (wavelength * 1.8) + motion * 0.4) * (lineAmp * 0.1)
+
+				const y = yBase + (waveA + waveB + waveC) * depthScale
+
+				d += `${s === 0 ? 'M' : 'L'}${x.toFixed(2)} ${y.toFixed(2)} `
+			}
+
+			return d.trim()
+		}
+
+		function animate(now) {
+			if (start === null) start = now
+
+			const elapsed = (now - start) / 1000
+
+			paths.forEach((path, i) => {
+				path.setAttribute('d', getPath(i, elapsed))
+			})
+
+			rafId = requestAnimationFrame(animate)
+		}
+
+		rafId = requestAnimationFrame(animate)
+	})
+</script>

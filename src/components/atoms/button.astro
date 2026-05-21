@@ -1,20 +1,42 @@
 ---
-import { cn } from "@/utils/cn"
-interface Props{
- className?: string
- variant?: 'icon-button' | 'regular' | 'go-back' 
+import { cn } from '@/utils/cn'
+import type { HTMLAttributes } from 'astro/types'
+
+type ButtonTag = 'button' | 'a'
+interface Props extends HTMLAttributes<'button'> {
+	className?: string
+	variant?: 'icon-button' | 'regular' | 'go-back' | 'simple' | 'cta'
+	type?: 'button' | 'submit'
+	cb?: () => void
+	as?: ButtonTag
+	href?: string
 }
 
 const buttonVariants = {
-  'icon-button': 'text-light text-2xl border-none',
-  'regular': 'text-dark dark:text-light border border-dark dark:border-light rounded-4xl px-3 py-1.5 text-sm',
-  'go-back': 'text-lg text-accent',
-  'simple': 'text-lg border-none underline text-dark dark:text-light'
+	'icon-button': 'text-light text-2xl border-none',
+	regular:
+		'text-dark dark:text-light border border-dark dark:border-light rounded-4xl px-3 py-2 text-sm',
+	cta: 'text-light border border-accent bg-accent dark:border-accent rounded-4xl px-3 py-2 text-sm',
+	'go-back': 'text-lg text-accent',
+	simple: 'text-lg border-none underline text-dark dark:text-light',
 }
 
-const {className, variant='regular'} = Astro.props
+const {
+	className,
+	variant = 'regular',
+	type,
+	cb,
+	as = 'button',
+	href,
+	...props
+} = Astro.props
+const Tag = as
 ---
 
-<button class={cn(buttonVariants[variant], className)}>
-  <slot/>
-</button>
+<Tag
+	{...props}
+	class={cn('cursor-pointer', buttonVariants[variant], className)}
+	href={href}
+>
+	<slot />
+</Tag>

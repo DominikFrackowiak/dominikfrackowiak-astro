@@ -1,0 +1,18 @@
+---
+import { cn } from '@/utils/cn'
+import CenteringWrapper from '../atoms/centering-wrapper.astro'
+import Heading from '../atoms/heading.astro'
+
+interface Props {
+	headingText: string
+	className?: string
+}
+
+const { headingText, className } = Astro.props
+---
+
+<CenteringWrapper className={cn('flex-col gap-14 py-2!', className)}>
+	<Heading>{headingText}</Heading>
+	<!-- <Technologies /> -->
+	<slot />
+</CenteringWrapper>

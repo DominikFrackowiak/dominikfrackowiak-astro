@@ -1,0 +1,25 @@
+---
+interface Props {
+	company: string
+	position: string
+	description: string
+	technologies: readonly string[]
+}
+
+const { company, position, description, technologies } = Astro.props
+---
+
+<article class='flex flex-col gap-8'>
+	<header class='flex items-center justify-between text-accent'>
+		<h3 class='uppercase'>{company}</h3>
+		<p class='text-sm!'>{position}</p>
+	</header>
+
+	<p>
+		{description}
+	</p>
+
+	<ul class='flex gap-2 text-dark/80 dark:text-light/60 text-md! font-light'>
+		{technologies.map(el => <li>{el}</li>)}
+	</ul>
+</article>

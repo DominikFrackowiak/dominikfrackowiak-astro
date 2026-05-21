@@ -1,0 +1,16 @@
+---
+import TechnologyCard from '../molecules/technology-card.astro'
+import {
+	frontend,
+	backend,
+	tools,
+	methodologies,
+} from '@/constants/technologies'
+---
+
+<section class='w-full flex justify-between gap-2'>
+	<TechnologyCard technology={frontend} category='Frontend' />
+	<TechnologyCard technology={backend} category='Backend' />
+	<TechnologyCard technology={tools} category='Tools' />
+	<TechnologyCard technology={methodologies} category='Methodology' />
+</section>

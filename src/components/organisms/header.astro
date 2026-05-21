@@ -1,15 +1,51 @@
 ---
+import { getLangFromUrl } from '@/i18n/utils'
 import Logo from '@/components/atoms/logo.astro'
 import CenteringWrapper from '@/components/atoms/centering-wrapper.astro'
 import ScrollIndicator from '../molecules/scroll-indicator.astro'
 // import HeaderActions from './header-actions.astro'
+import Dropdown from '../molecules/dropdown.astro'
+import EarthIcon from '../atoms/icons/earth-icon.astro'
+import HamburgerIcon from '../atoms/icons/hamburger-icon.astro'
+import ThemePicker from '../molecules/theme-picker.astro'
+const lang = getLangFromUrl(Astro.url)
+const currentPath = Astro.url.pathname
+
+function getNewPath(newLocale: string) {
+	const parts = currentPath.split('/')
+	parts.splice(1, 1, newLocale)
+	const newPath = parts.join('/')
+	return newPath
+}
 ---
 
-<header class='fixed top-0 left-0 w-screen bg-dark dark:bg-accent py-3.5'>
+<header class='fixed top-0 left-0 z-50 w-screen bg-dark dark:bg-accent py-3.5'>
 	<ScrollIndicator />
 	<CenteringWrapper className='justify-between items-center'>
 		<Logo />
-		<!-- <HeaderActions /> -->
+
+		<div class='flex items-center gap-7 h-full'>
+			<ThemePicker />
+			<Dropdown>
+				<EarthIcon slot='trigger' />
+				<ul>
+					<li>
+						<a href={getNewPath('en')}>English</a>
+					</li><li>
+						<a href={getNewPath('pl')}>Polski</a>
+					</li><li>
+						<a href={getNewPath('es')}>Español</a>
+					</li>
+				</ul>
+			</Dropdown>
+			<Dropdown>
+				<HamburgerIcon slot='trigger' />
+				<ul>
+					<li><a href={`/${lang}/projects`}>PROJECTS</a></li>
+					<li><a href={`/${lang}/blog`}>BLOG</a></li>
+				</ul>
+			</Dropdown>
+		</div>
 	</CenteringWrapper>
 </header>
 

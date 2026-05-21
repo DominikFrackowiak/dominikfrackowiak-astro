@@ -18,15 +18,5 @@ import Dropdown from '@/components/molecules/dropdown.astro'
 </div>
 
 <script>
-	const applyTheme = (theme: 'dark' | 'light') => {
-		document.documentElement.classList.toggle('dark', theme === 'dark')
-		localStorage.theme = theme
-	}
 
-	document.querySelectorAll('[data-theme-toggle]').forEach((trigger) => {
-		trigger.addEventListener('click', () => {
-			const isDark = document.documentElement.classList.contains('dark')
-			applyTheme(isDark ? 'light' : 'dark')
-		})
-	})
 </script>

@@ -1,3 +1,70 @@
 ---
+import { cn } from '@/utils/cn'
+
+
+interface Props {
+	className?: string
+	buttonVariant?: 'icon-button' | 'regular' | 'go-back' | 'simple'
+}
+
+const { className, buttonVariant = 'icon-button' } = Astro.props
 ---
 
+<div class='relative flex flex-col items-center' data-dropdown>
+	<button
+		aria-expanded='false'
+		class={cn('text-light text-2xl border-none cursor-pointer', className)}
+		data-dropdown-trigger
+	>
+		<slot name='trigger' />
+	</button>
+	<div
+		class='absolute right-0 top-full mt-3 min-w-36 bg-light p-3 text-dark shadow-lg dark:bg-dark dark:text-light hidden'
+		data-dropdown-content
+	>
+		<slot />
+	</div>
+</div>
+
+<script>
+	const dropdownTriggers = [
+		...document.querySelectorAll('[data-dropdown-trigger]'),
+	]
+
+	const dropdownContents = [
+		...document.querySelectorAll('[data-dropdown-content]'),
+	]
+
+	dropdownTriggers.forEach((trigger, i) => {
+		trigger.addEventListener('click', e => {
+			e.stopPropagation()
+			if (dropdownContents[i].classList.contains('hidden')) {
+				dropdownContents.forEach(content => {
+					content.classList.remove('flex')
+					content.classList.add('hidden')
+				})
+				dropdownContents[i].classList.remove('hidden')
+				dropdownContents[i].classList.add('flex')
+			} else {
+				dropdownContents[i].classList.add('hidden')
+				dropdownContents[i].classList.remove('flex')
+			}
+		})
+	})
+
+	document.body.addEventListener('click', () => {
+		dropdownContents.forEach(content => {
+			content.classList.remove('flex')
+			content.classList.add('hidden')
+		})
+	})
+
+	document.body.addEventListener('keydown', event => {
+		if (event.key === 'Escape') {
+			dropdownContents.forEach(content => {
+				content.classList.remove('flex')
+				content.classList.add('hidden')
+			})
+		}
+	})
+</script>

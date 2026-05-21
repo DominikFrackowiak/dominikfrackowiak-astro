@@ -1,0 +1,62 @@
+---
+import Image from 'astro/components/Image.astro'
+import portrait from '@/assets/images/dominikfrackowiak2.webp'
+import Button from '../atoms/button.astro'
+import StaticWaves2 from '@/assets/new-wave2.svg'
+import CenteringWrapper from '../atoms/centering-wrapper.astro'
+
+// pt-50
+---
+
+<section
+	class='flex min-h-screen w-full gap-20 pb-40 waves-bg relative overflow-hidden'
+	style={`--waves-url: url(${StaticWaves2.src});`}
+>
+	<CenteringWrapper className='flex justify-between items-center pt-52'>
+		<div class='flex justify-start w-2/6'>
+			<Image
+				src={portrait}
+				alt="Dominik's Frackowiak portrait"
+				class='h-34 w-34 rounded-full border-2 border-accent z-10'
+			/>
+		</div>
+		<div class='flex flex-col gap-4 items-end w-[44%] pt-20'>
+			<p
+				class='text-dark dark:text-light text-justify text-hero! leading-8! font-extralight!'
+			>
+				Hola, soy Dominik Frąckowiak. Frontend developer basado en Madrid.
+				Trabajo principalmente con React, Next.js y Astro. Este sitio reúne
+				proyectos, notas y experimentos personales.
+			</p>
+			<div class='flex w-full gap-4 justify-end!'>
+				<Button as='a' variant='regular' href='/es/projects'
+					>Contacta cónmigo</Button
+				>
+				<Button as='a' variant='cta' href='/es/projects'
+					>Ver los proyectos</Button
+				>
+			</div>
+		</div>
+	</CenteringWrapper>
+
+	<style>
+		.waves-bg::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			z-index: 0;
+			pointer-events: none;
+			background-color: rgb(31 29 29 / 10%);
+			mask-image: var(--waves-url);
+			mask-repeat: no-repeat;
+			mask-size: cover;
+			-webkit-mask-image: var(--waves-url);
+			-webkit-mask-repeat: no-repeat;
+			-webkit-mask-size: cover;
+		}
+
+		:global(.dark) .waves-bg::before {
+			background-color: rgb(201 71 71 / 31%);
+		}
+	</style>
+</section>

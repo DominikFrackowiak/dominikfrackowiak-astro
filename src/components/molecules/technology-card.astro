@@ -1,0 +1,28 @@
+---
+import { cn } from '@/utils/cn'
+
+interface Props {
+	className?: string
+	technology: readonly string[]
+	category: string
+}
+
+const { className, technology, category } = Astro.props
+
+// flex flex-col items-start justify-start bg-dark/2 dark-bg-dark/10 gap-4
+---
+
+<div class='flex flex-col gap-2'>
+	<h3 class='text-accent uppercase text-md!'>{category}</h3>
+	<ul class={cn('flex flex-col gap-1', className)}>
+		{
+			technology.map(el => (
+				<li>
+					<span class='mute text-list! text-dark/5 dark:text-light/25'>
+						{el}
+					</span>
+				</li>
+			))
+		}
+	</ul>
+</div>

@@ -1,0 +1,23 @@
+---
+import SunIcon from '../atoms/icons/sun-icon.astro'
+import MoonIcon from '../atoms/icons/moon-icon.astro'
+import Button from '../atoms/button.astro'
+---
+
+<button type='button' class='text-light cursor-pointer' data-theme-toggle
+	><SunIcon /></button
+>
+
+<script>
+	const applyTheme = (theme: 'dark' | 'light') => {
+		document.documentElement.classList.toggle('dark', theme === 'dark')
+		localStorage.theme = theme
+	}
+
+	document.querySelectorAll('[data-theme-toggle]').forEach(trigger => {
+		trigger.addEventListener('click', () => {
+			const isDark = document.documentElement.classList.contains('dark')
+			applyTheme(isDark ? 'light' : 'dark')
+		})
+	})
+</script>
