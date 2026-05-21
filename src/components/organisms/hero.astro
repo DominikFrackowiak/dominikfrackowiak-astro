@@ -2,7 +2,7 @@
 import Image from 'astro/components/Image.astro'
 import portrait from '@/assets/images/dominikfrackowiak2.webp'
 import Button from '../atoms/button.astro'
-import StaticWaves2 from '@/assets/new-wave2.svg'
+import wavesUrl from '@/assets/new-wave2.svg?url'
 import CenteringWrapper from '../atoms/centering-wrapper.astro'
 
 // pt-50
@@ -10,9 +10,13 @@ import CenteringWrapper from '../atoms/centering-wrapper.astro'
 
 <section
 	class='flex min-h-screen w-full gap-20 pb-40 waves-bg relative overflow-hidden'
-	style={`--waves-url: url(${StaticWaves2.src});`}
+	style={`background-image: url(${wavesUrl});`}
 >
-	<CenteringWrapper className='flex justify-between items-center pt-52'>
+	<div
+		class='absolute top-0 left-0 h-screen w-full bg-light/60 dark:bg-dark/20'
+	>
+	</div>
+	<CenteringWrapper className='flex justify-between items-center pt-52 z-10'>
 		<div class='flex justify-start w-2/6'>
 			<Image
 				src={portrait}
@@ -21,6 +25,11 @@ import CenteringWrapper from '../atoms/centering-wrapper.astro'
 			/>
 		</div>
 		<div class='flex flex-col gap-4 items-end w-[44%] pt-20'>
+			<!-- <Image
+				src={portrait}
+				alt="Dominik's Frackowiak portrait"
+				class='h-34 w-34 rounded-full border-2 border-accent z-10'
+			/> -->
 			<p
 				class='text-dark dark:text-light text-justify text-hero! leading-8! font-extralight!'
 			>
@@ -40,23 +49,10 @@ import CenteringWrapper from '../atoms/centering-wrapper.astro'
 	</CenteringWrapper>
 
 	<style>
-		.waves-bg::before {
-			content: '';
-			position: absolute;
-			inset: 0;
-			z-index: 0;
-			pointer-events: none;
-			background-color: rgb(31 29 29 / 10%);
-			mask-image: var(--waves-url);
-			mask-repeat: no-repeat;
-			mask-size: cover;
-			-webkit-mask-image: var(--waves-url);
-			-webkit-mask-repeat: no-repeat;
-			-webkit-mask-size: cover;
-		}
-
-		:global(.dark) .waves-bg::before {
-			background-color: rgb(201 71 71 / 31%);
+		.waves-bg {
+			background-position: center top;
+			background-repeat: no-repeat;
+			background-size: cover;
 		}
 	</style>
 </section>

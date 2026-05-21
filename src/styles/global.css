@@ -29,11 +29,11 @@ body {
 }
 
 .logo {
-	@apply text-light font-light tracking-heading text-xl;
+	@apply text-light font-light tracking-heading text-xl leading-none;
 }
 
 .logo-subtitle {
-	@apply text-light font-semibold text-sm;
+	@apply text-light font-semibold text-sm leading-none;
 }
 
 p,
