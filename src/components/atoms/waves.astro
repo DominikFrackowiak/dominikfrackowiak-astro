@@ -32,10 +32,16 @@ const svgMarkup = waveSvg
 <Fragment set:html={svgMarkup} />
 
 <script>
-	const svgs = document.querySelectorAll('[data-topographic-wave]')
+	const stopWaveAnimations = new Set<() => void>()
 
-	svgs.forEach(svg => {
+	function initWaves() {
+		const svgs = document.querySelectorAll('[data-topographic-wave]')
+
+		svgs.forEach(svg => {
 		if (!(svg instanceof SVGSVGElement)) return
+		if (svg.dataset.bound === 'true') return
+
+		svg.dataset.bound = 'true'
 
 		const viewBox = svg.viewBox.baseVal
 		const width = viewBox?.width || 1200
@@ -114,10 +120,24 @@ const svgMarkup = waveSvg
 		function stopAnimation() {
 			if (rafId !== null) cancelAnimationFrame(rafId)
 			rafId = null
+			stopWaveAnimations.delete(stopAnimation)
 		}
 
+		stopWaveAnimations.add(stopAnimation)
 		rafId = requestAnimationFrame(animate)
-		document.addEventListener('astro:before-swap', stopAnimation, { once: true })
 		window.addEventListener('beforeunload', stopAnimation, { once: true })
 	})
+	}
+
+	function stopAllWaveAnimations() {
+		stopWaveAnimations.forEach(stopAnimation => stopAnimation())
+	}
+
+	initWaves()
+
+	if (document.documentElement.dataset.wavesGlobalBound !== 'true') {
+		document.documentElement.dataset.wavesGlobalBound = 'true'
+		document.addEventListener('astro:page-load', initWaves)
+		document.addEventListener('astro:before-swap', stopAllWaveAnimations)
+	}
 </script>

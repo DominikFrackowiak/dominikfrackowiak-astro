@@ -27,44 +27,64 @@ const { className, buttonVariant = 'icon-button' } = Astro.props
 </div>
 
 <script>
-	const dropdownTriggers = [
-		...document.querySelectorAll('[data-dropdown-trigger]'),
-	]
+	function initDropdowns() {
+		const dropdowns = document.querySelectorAll('[data-dropdown]')
 
-	const dropdownContents = [
-		...document.querySelectorAll('[data-dropdown-content]'),
-	]
-
-	dropdownTriggers.forEach((trigger, i) => {
-		trigger.addEventListener('click', e => {
-			e.stopPropagation()
-			if (dropdownContents[i].classList.contains('hidden')) {
-				dropdownContents.forEach(content => {
-					content.classList.remove('flex')
-					content.classList.add('hidden')
-				})
-				dropdownContents[i].classList.remove('hidden')
-				dropdownContents[i].classList.add('flex')
-			} else {
-				dropdownContents[i].classList.add('hidden')
-				dropdownContents[i].classList.remove('flex')
+		dropdowns.forEach(dropdown => {
+			if (!(dropdown instanceof HTMLElement) || dropdown.dataset.bound === 'true') {
+				return
 			}
-		})
-	})
 
-	document.body.addEventListener('click', () => {
-		dropdownContents.forEach(content => {
+			const trigger = dropdown.querySelector('[data-dropdown-trigger]')
+			const content = dropdown.querySelector('[data-dropdown-content]')
+
+			if (!(trigger instanceof HTMLElement) || !(content instanceof HTMLElement)) {
+				return
+			}
+
+			dropdown.dataset.bound = 'true'
+
+			trigger.addEventListener('click', event => {
+				event.stopPropagation()
+
+				const dropdownContents = document.querySelectorAll(
+					'[data-dropdown-content]',
+				)
+
+				if (content.classList.contains('hidden')) {
+					dropdownContents.forEach(content => {
+						content.classList.remove('flex')
+						content.classList.add('hidden')
+					})
+					content.classList.remove('hidden')
+					content.classList.add('flex')
+				} else {
+					content.classList.add('hidden')
+					content.classList.remove('flex')
+				}
+			})
+		})
+	}
+
+	function closeDropdowns() {
+		document.querySelectorAll('[data-dropdown-content]').forEach(content => {
 			content.classList.remove('flex')
 			content.classList.add('hidden')
 		})
-	})
+	}
 
-	document.body.addEventListener('keydown', event => {
-		if (event.key === 'Escape') {
-			dropdownContents.forEach(content => {
-				content.classList.remove('flex')
-				content.classList.add('hidden')
-			})
-		}
-	})
+	if (document.documentElement.dataset.dropdownsGlobalBound !== 'true') {
+		document.documentElement.dataset.dropdownsGlobalBound = 'true'
+
+		document.body.addEventListener('click', closeDropdowns)
+
+		document.body.addEventListener('keydown', event => {
+			if (event.key === 'Escape') {
+				closeDropdowns()
+			}
+		})
+	}
+
+	initDropdowns()
+	document.addEventListener('astro:page-load', initDropdowns)
 </script>

@@ -1,23 +1,79 @@
 ---
 import SunIcon from '../atoms/icons/sun-icon.astro'
 import MoonIcon from '../atoms/icons/moon-icon.astro'
-import Button from '../atoms/button.astro'
 ---
 
-<button type='button' class='text-light cursor-pointer' data-theme-toggle
-	><SunIcon /></button
+<button
+	type='button'
+	class='relative text-light cursor-pointer h-5 w-5'
+	data-theme-toggle
+	><SunIcon className='sun absolute top-0 left-0 w-full' /><MoonIcon
+		className='moon absolute top-0 left-0 w-full'
+	/></button
 >
 
 <script>
-	const applyTheme = (theme: 'dark' | 'light') => {
-		document.documentElement.classList.toggle('dark', theme === 'dark')
-		localStorage.theme = theme
+	type Theme = 'dark' | 'light'
+
+	function toggleIcon(theme: Theme, root: ParentNode = document) {
+		root.querySelectorAll('[data-theme-toggle]').forEach(trigger => {
+			const sunIcon = trigger.querySelector('.sun')
+			const moonIcon = trigger.querySelector('.moon')
+
+			sunIcon?.classList.toggle('hidden', theme !== 'dark')
+			moonIcon?.classList.toggle('hidden', theme !== 'light')
+		})
 	}
 
-	document.querySelectorAll('[data-theme-toggle]').forEach(trigger => {
-		trigger.addEventListener('click', () => {
-			const isDark = document.documentElement.classList.contains('dark')
-			applyTheme(isDark ? 'light' : 'dark')
+	const getStoredTheme = (): Theme => {
+		return localStorage.theme === 'light' ? 'light' : 'dark'
+	}
+
+	const applyTheme = (theme: Theme) => {
+		document.documentElement.classList.toggle('dark', theme === 'dark')
+		document.documentElement.dataset.theme = theme
+		localStorage.theme = theme
+		toggleIcon(theme)
+	}
+
+	function syncTheme() {
+		applyTheme(getStoredTheme())
+	}
+
+	function initThemePicker() {
+		syncTheme()
+
+		document.querySelectorAll('[data-theme-toggle]').forEach(trigger => {
+			if (
+				!(trigger instanceof HTMLElement) ||
+				trigger.dataset.bound === 'true'
+			) {
+				return
+			}
+
+			trigger.dataset.bound = 'true'
+
+			trigger.addEventListener('click', () => {
+				const isDark = document.documentElement.classList.contains('dark')
+				applyTheme(isDark ? 'light' : 'dark')
+			})
 		})
-	})
+	}
+
+	initThemePicker()
+
+	if (document.documentElement.dataset.themePickerGlobalBound !== 'true') {
+		document.documentElement.dataset.themePickerGlobalBound = 'true'
+		document.addEventListener('astro:page-load', initThemePicker)
+		document.addEventListener('astro:before-swap', event => {
+			const theme = getStoredTheme()
+
+			event.newDocument.documentElement.classList.toggle(
+				'dark',
+				theme === 'dark'
+			)
+			event.newDocument.documentElement.dataset.theme = theme
+			toggleIcon(theme, event.newDocument)
+		})
+	}
 </script>
