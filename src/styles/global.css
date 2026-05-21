@@ -17,9 +17,9 @@
 	--color-accent: #c94747;
 	--color-custom-gray: rgb(165, 164, 164);
 	--tracking-heading: 2.5px;
-	--text-p: 18px;
-	--text-list: 17px;
-	--text-hero: 18px;
+	--text-p: 17px;
+	--text-list: 16px;
+	--text-hero: 17px;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
