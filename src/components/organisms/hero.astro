@@ -2,21 +2,31 @@
 import Image from 'astro/components/Image.astro'
 import portrait from '@/assets/images/dominikfrackowiak2.webp'
 import Button from '../atoms/button.astro'
-import wavesUrl from '@/assets/new-wave2.svg?url'
 import CenteringWrapper from '../atoms/centering-wrapper.astro'
+import Waves from '../atoms/waves.astro'
 
 // pt-50
 ---
 
 <section
-	class='flex min-h-screen w-full gap-20 pb-40 waves-bg relative overflow-hidden'
-	style={`background-image: url(${wavesUrl});`}
+	class='flex min-h-[65vh] w-full gap-20 pb-40 waves-bg relative isolate overflow-hidden pt-20'
 >
+	<Waves
+		class='absolute inset-0 z-0 h-full w-full text-accent'
+		lineCount={44}
+		amplitude={42}
+		wavelength={165}
+		speed={0.8}
+		tilt={0.16}
+		densityEase={1.35}
+	/>
 	<div
-		class='absolute top-0 left-0 h-screen w-full bg-light/60 dark:bg-dark/20'
+		class='absolute top-0 left-0 z-1 h-screen w-full bg-light/60 dark:bg-dark/20'
 	>
 	</div>
-	<CenteringWrapper className='flex justify-between items-center pt-52 z-10'>
+	<CenteringWrapper
+		className='flex justify-between items-center pt-20 relative z-10'
+	>
 		<div class='flex justify-start w-2/6'>
 			<Image
 				src={portrait}
@@ -47,12 +57,4 @@ import CenteringWrapper from '../atoms/centering-wrapper.astro'
 			</div>
 		</div>
 	</CenteringWrapper>
-
-	<style>
-		.waves-bg {
-			background-position: center top;
-			background-repeat: no-repeat;
-			background-size: cover;
-		}
-	</style>
 </section>
