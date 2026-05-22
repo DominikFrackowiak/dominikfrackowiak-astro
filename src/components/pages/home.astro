@@ -13,9 +13,6 @@ import { experience } from '@/constants/experience'
 <Layout title='Home'>
 	<Hero />
 
-	<HeadingTextBlock headingText='TECHNOLOGIES'>
-		<Technologies />
-	</HeadingTextBlock>
 	<HeadingTextBlock headingText={t('experience.section.title')}>
 		{
 			experience.map(el => (
@@ -27,5 +24,16 @@ import { experience } from '@/constants/experience'
 				/>
 			))
 		}
+	</HeadingTextBlock>
+
+	<HeadingTextBlock headingText='TECHNOLOGIES'>
+		<Technologies />
+	</HeadingTextBlock>
+
+	<HeadingTextBlock headingText='LANGUAGES'>
+		<p>
+			Soy un hablante nativo del polaco, certificado en B2 en inglés y C2 en
+			español.
+		</p>
 	</HeadingTextBlock>
 </Layout>

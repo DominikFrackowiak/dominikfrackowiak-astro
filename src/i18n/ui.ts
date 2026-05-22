@@ -8,8 +8,10 @@ export const defaultLang = 'en';
 
 export const ui = {
  en: {
-  'nav.home': 'Home',
   'nav.about': 'About',
+  'nav.contact': 'Contact',
+  'nav.projects': 'Projects',
+  'nav.blog': 'Blog',
   'experience.section.title': 'Experience',
   'experience.company.softcollie': '2025 — 2026 · SOFTCOLLIE',
   'experience.position.softcollie': 'Frontend Developer / Co-founder',
@@ -28,8 +30,10 @@ export const ui = {
   'experience.description.selfemployed': 'Created websites and early frontend projects using HTML, CSS and vanilla JavaScript.'
  },
  es: {
-  'nav.home': 'Inicio',
   'nav.about': 'Sobre mí',
+  'nav.contact': 'Contacto',
+  'nav.projects': 'Proyectos',
+  'nav.blog': 'Blog',
   'experience.section.title': 'Experiencia',
   'experience.company.softcollie': '2025 — 2026 · SOFTCOLLIE',
   'experience.position.softcollie': 'Frontend Developer / Cofundador',
@@ -48,8 +52,10 @@ export const ui = {
   'experience.description.selfemployed': 'Creación de sitios web y primeros proyectos frontend con HTML, CSS y JavaScript vanilla.'
  },
  pl: {
-  'nav.home': 'Strona główna',
   'nav.about': 'O mnie',
+  'nav.contact': 'Kontakt',
+  'nav.projects': 'Projekty',
+  'nav.blog': 'Blog',
   'experience.section.title': 'Doświadczenie',
   'experience.company.softcollie': '2025 — 2026 · SOFTCOLLIE',
   'experience.position.softcollie': 'Frontend Developer / Współzałożyciel',

@@ -8,6 +8,7 @@ import Dropdown from '../molecules/dropdown.astro'
 import EarthIcon from '../atoms/icons/earth-icon.astro'
 import HamburgerIcon from '../atoms/icons/hamburger-icon.astro'
 import ThemePicker from '../molecules/theme-picker.astro'
+import Navigation from '../molecules/navigation.astro'
 const lang = getLangFromUrl(Astro.url)
 const currentPath = Astro.url.pathname
 
@@ -25,6 +26,7 @@ function getNewPath(newLocale: string) {
 		<Logo />
 
 		<div class='flex items-center gap-7 h-full'>
+			<Navigation />
 			<ThemePicker />
 			<Dropdown>
 				<EarthIcon slot='trigger' />
@@ -38,7 +40,7 @@ function getNewPath(newLocale: string) {
 					</li>
 				</ul>
 			</Dropdown>
-			<Dropdown>
+			<Dropdown className='block lg:hidden'>
 				<HamburgerIcon slot='trigger' />
 				<ul>
 					<li><a href={`/${lang}/projects`}>PROJECTS</a></li>
@@ -48,4 +50,3 @@ function getNewPath(newLocale: string) {
 		</div>
 	</CenteringWrapper>
 </header>
-

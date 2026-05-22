@@ -1,0 +1,25 @@
+---
+import { useTranslations, getLangFromUrl } from '@/i18n/utils'
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+import { getNavigation } from '@/constants/navigation'
+
+const navigation = getNavigation(lang)
+---
+
+<nav>
+	<ul class='flex justify-between gap-5'>
+		{
+			navigation.map(item => (
+				<li>
+					<a
+						class='text-light! font-light! hover:[text-shadow:0_0_0_currentColor]'
+						href={item.url}
+					>
+						{t(item.title)}
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</nav>

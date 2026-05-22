@@ -1,5 +1,16 @@
 ---
-
+import CenteringWrapper from '../atoms/centering-wrapper.astro'
+import { socialNavigation } from '@/constants/navigation'
 ---
 
-<footer class='h-12.5 bg-dark dark:bg-accent'>FOOTER</footer>
+<footer class='h-12.5 bg-dark dark:bg-accent'>
+	<CenteringWrapper className='h-full items-center justify-center gap-60'>
+		{
+			socialNavigation.map(({ label, url, icon: Icon }) => (
+				<a href={url} aria-label={label} target='_blank'>
+					<Icon className='size-5 text-light' />
+				</a>
+			))
+		}
+	</CenteringWrapper>
+</footer>
