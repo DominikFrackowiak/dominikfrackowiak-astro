@@ -16,6 +16,7 @@ export const backend = [
 ] as const
 
 export const tools = [
+ "Zustand",
  "Storybook",
  "Zod",
  "Git",
@@ -25,5 +26,6 @@ export const tools = [
 
 export const methodologies = [
  "BEM",
- "Atomic Design"
+ "Atomic Design",
+ "Boy Scout Principle"
 ] as const

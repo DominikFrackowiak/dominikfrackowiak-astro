@@ -12,8 +12,9 @@
 
 @theme {
 	--font-sans: 'Open Sans', ui-sans-serif, system-ui, sans-serif;
-	--color-dark: #1f1d1d;
-	--color-light: #f5f4f4;
+	--color-darker: #1f1d1d;
+	--color-dark: #2e2a2a;
+	--color-light: #f9f8f8;
 	--color-accent: #c94747;
 	--color-custom-gray: rgb(165, 164, 164);
 	--tracking-heading: 2.5px;
@@ -47,4 +48,26 @@ h3 {
 
 h4 {
 	@apply text-accent text-list;
+}
+
+label {
+	@apply text-dark dark:text-light font-light text-list;
+}
+
+input,
+textarea {
+	@apply w-full bg-transparent border-0 border-b border-dark/80 dark:border-light/80 text-dark dark:text-light outline-none rounded-none;
+}
+
+input:focus,
+textarea:focus {
+	@apply outline-none border-light;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+	-webkit-text-fill-color: var(--color-light);
+	box-shadow: 0 0 0px 1000px var(--color-dark) inset;
+	transition: background-color 9999s ease-in-out 0s;
 }

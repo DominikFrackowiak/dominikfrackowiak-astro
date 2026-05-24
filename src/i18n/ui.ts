@@ -27,7 +27,10 @@ export const ui = {
   'experience.description.incloudforever': 'Developed components and pages in Next.js. Worked on purchasing flows and dynamic PDF document generation.',
   'experience.company.selfemployed': 'Since 2019 — Web Development Projects',
   'experience.position.selfemployed': 'Webmaster',
-  'experience.description.selfemployed': 'Created websites and early frontend projects using HTML, CSS and vanilla JavaScript.'
+  'experience.description.selfemployed': 'Created websites and early frontend projects using HTML, CSS and vanilla JavaScript.',
+  'about.hobbies': 'I am interested in social issues and politics. I am a vegetarian and an animal lover(I share my life with two Andalusian Bodeguero dogs: Yoko & Sugus < 3).I am a cyclist and a nature enthusiast.I enjoy traveling outside the city and spending nights surrounded by nature in my small van.',
+  'about.music': 'I am musically polyamorous :), my list of favorite musicians is very long and includes: Swans, Sonic Youth, Armia, Crass, Neurosis, Killing Joke, The Cure, New Model Army, Izrael, Vangelis, Depeche Mode, Massive Attack, Godflesh, Discharge, David Bowie, Brian Eno, Brygada Kryzys, Portishead, Black Uhuru, Tricky, Public Image Limited, Conflict, Henryk Mikołaj Górecki, Chumbawamba, Siekiera, Cocteau Twins, Joy Division, Fugazi, Bad Brains, and many, many others.',
+  'about.film': "I enjoy cinema (Buñuel, Wajda, Visconti, Fellini, Pasolini, the Coen brothers, Lynch, etc. etc.), I like to read (mainly non-fiction) and, of course, I enjoy watching TV series ('House of Cards', 'Succession', 'Fargo', 'The Sopranos', 'Twin Peaks', etc. etc.)."
  },
  es: {
   'nav.about': 'Sobre mí',
@@ -49,8 +52,13 @@ export const ui = {
   'experience.description.incloudforever': 'Desarrollo de componentes y páginas en Next.js. Trabajo en flujos de compra y generación dinámica de documentos PDF.',
   'experience.company.selfemployed': 'Desde 2019 — Proyectos de desarrollo web',
   'experience.position.selfemployed': 'Webmaster',
-  'experience.description.selfemployed': 'Creación de sitios web y primeros proyectos frontend con HTML, CSS y JavaScript vanilla.'
- },
+  'experience.description.selfemployed': 'Creación de sitios web y primeros proyectos frontend con HTML, CSS y JavaScript vanilla.',
+  'about.hobbies': '		I am interested in social issues and politics. I am a vegetarian and an animal lover(I share my life with two Andalusian Bodeguero dogs: Yoko & Sugus < 3).I am a cyclist and a nature enthusiast.I enjoy traveling outside the city and spending nights surrounded by nature in my small van.',
+  'about.music': 'I am musically polyamorous :), my list of favorite musicians is very long and includes: Swans, Sonic Youth, Armia, Crass, Neurosis, Killing Joke, The Cure, New Model Army, Izrael, Vangelis, Depeche Mode, Massive Attack, Godflesh, Discharge, David Bowie, Brian Eno, Brygada Kryzys, Portishead, Black Uhuru, Tricky, Public Image Limited, Conflict, Henryk Mikołaj Górecki, Chumbawamba, Siekiera, Cocteau Twins, Joy Division, Fugazi, Bad Brains, and many, many others.',
+  'about.film': "I enjoy cinema (Buñuel, Wajda, Visconti, Fellini, Pasolini, the Coen brothers, Lynch, etc. etc.), I like to read (mainly non-fiction) and, of course, I enjoy watching TV series ('House of Cards', 'Succession', 'Fargo', 'The Sopranos', 'Twin Peaks', etc. etc.)."
+
+ }
+ ,
  pl: {
   'nav.about': 'O mnie',
   'nav.contact': 'Kontakt',
@@ -71,6 +79,11 @@ export const ui = {
   'experience.description.incloudforever': 'Tworzenie komponentów i stron w Next.js. Praca nad flows zakupowymi oraz dynamicznym generowaniem dokumentów PDF.',
   'experience.company.selfemployed': 'Od 2019 — Projekty web developmentowe',
   'experience.position.selfemployed': 'Webmaster',
-  'experience.description.selfemployed': 'Tworzenie stron internetowych i pierwszych projektów frontendowych z użyciem HTML, CSS oraz czystego JavaScriptu.'
+  'experience.description.selfemployed': 'Tworzenie stron internetowych i pierwszych projektów frontendowych z użyciem HTML, CSS oraz czystego JavaScriptu.',
+  'about.hobbies': '		I am interested in social issues and politics. I am a vegetarian and an animal lover(I share my life with two Andalusian Bodeguero dogs: Yoko & Sugus < 3).I am a cyclist and a nature enthusiast.I enjoy traveling outside the city and spending nights surrounded by nature in my small van.',
+  'about.music': 'I am musically polyamorous :), my list of favorite musicians is very long and includes: Swans, Sonic Youth, Armia, Crass, Neurosis, Killing Joke, The Cure, New Model Army, Izrael, Vangelis, Depeche Mode, Massive Attack, Godflesh, Discharge, David Bowie, Brian Eno, Brygada Kryzys, Portishead, Black Uhuru, Tricky, Public Image Limited, Conflict, Henryk Mikołaj Górecki, Chumbawamba, Siekiera, Cocteau Twins, Joy Division, Fugazi, Bad Brains, and many, many others.',
+  'about.film': "I enjoy cinema (Buñuel, Wajda, Visconti, Fellini, Pasolini, the Coen brothers, Lynch, etc. etc.), I like to read (mainly non-fiction) and, of course, I enjoy watching TV series ('House of Cards', 'Succession', 'Fargo', 'The Sopranos', 'Twin Peaks', etc. etc.)."
+
+
  }
 } as const;

@@ -1,5 +1,93 @@
 ---
 import Layout from '@/layouts/Layout.astro'
+import CenteringWrapper from '../atoms/centering-wrapper.astro'
+import Waves from '../atoms/waves.astro'
+import Button from '../atoms/button.astro'
+import Heading from '../atoms/heading.astro'
+import Modal from '../organisms/modal.astro'
+
+const locale = Astro.currentLocale ?? 'en'
+
+const baseUrl = import.meta.env.DEV
+	? 'http://localhost:4321'
+	: 'https://dominikfrackowiak.com'
+
+const redirectUrl = `${baseUrl}/${locale}/contact?messageSent=true`
+const contactUrl = `/${locale}/contact`
+const homeUrl = `/${locale}`
+
+// h-17.5 w-68.5 overflow-hidden
 ---
 
-<Layout title='Contact'>CONTACT</Layout>
+<Layout title='Contact'>
+	<Waves class='h-35 w-full' />
+	<CenteringWrapper className='flex-col gap-10 py-10'>
+		<form
+			action='https://api.web3forms.com/submit'
+			method='POST'
+			class='flex flex-col items-start w-full lg:w-1/2 max-w-90 gap-5'
+			id='contact'
+		>
+			<Heading className='mb-10'>CONTACT FORM</Heading>
+			<input type='hidden' name='redirect' value={redirectUrl} />
+			<input
+				type='hidden'
+				name='access_key'
+				value={import.meta.env.PUBLIC_WEB3FORMS_KEY}
+			/>
+			<div class='flex flex-col gap-2 w-full'>
+				<label for='name'>Name:</label>
+				<input type='text' name='name' required id='name' />
+			</div>
+			<div class='flex flex-col gap-2 w-full'>
+				<label for='email'>E-mail:</label>
+				<input type='email' name='email' required id='email' />
+			</div>
+			<div class='flex flex-col gap-2 w-full'>
+				<label for='message'>Message:</label>
+				<textarea name='message' required id='message'></textarea>
+			</div>
+			<div class='border border-accent h-19.5 w-76 origin-top-left scale-[0.7]'>
+				<div class='h-captcha h-full' data-captcha='true'></div>
+			</div>
+
+			<Button type='submit'>Sent the message</Button>
+		</form>
+	</CenteringWrapper>
+	<Modal closeHref={contactUrl} homeHref={homeUrl} />
+</Layout>
+
+<!-- -- Step 2: Add the Web3Forms script ---->
+<script src='https://web3forms.com/client/script.js' async defer></script>
+<script>
+	const form = document.querySelector<HTMLFormElement>('#contact')
+	const successModal = document.querySelector<HTMLElement>(
+		'#contact-success-modal'
+	)
+
+	const searchParams = new URLSearchParams(window.location.search)
+	const wasMessageSent = searchParams.get('messageSent') === 'true'
+
+	if (wasMessageSent) {
+		successModal?.removeAttribute('hidden')
+	}
+
+	form?.addEventListener('submit', function (e) {
+		const captcha = form.querySelector<HTMLElement>('[data-captcha]')
+		const captchaFrame = captcha?.querySelector('iframe')
+		const captchaResponse = form.querySelector<HTMLTextAreaElement>(
+			'textarea[name="h-captcha-response"]'
+		)
+
+		if (!captchaFrame) {
+			e.preventDefault()
+			alert('Captcha is still loading. Please try again in a moment.')
+			return
+		}
+
+		if (!captchaResponse || !captchaResponse.value) {
+			e.preventDefault()
+			alert('Please complete the captcha before sending.')
+		}
+	})
+</script>

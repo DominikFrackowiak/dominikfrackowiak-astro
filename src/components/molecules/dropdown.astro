@@ -1,16 +1,20 @@
 ---
 import { cn } from '@/utils/cn'
 
-
 interface Props {
 	className?: string
+	wrapperClassName?: string
 	buttonVariant?: 'icon-button' | 'regular' | 'go-back' | 'simple'
 }
 
-const { className, buttonVariant = 'icon-button' } = Astro.props
+const {
+	className,
+	buttonVariant = 'icon-button',
+	wrapperClassName,
+} = Astro.props
 ---
 
-<div class='relative flex flex-col items-center' data-dropdown>
+<div class={cn('relative flex flex-col items-center', wrapperClassName)} data-dropdown>
 	<button
 		aria-expanded='false'
 		class={cn('text-light text-2xl border-none cursor-pointer', className)}
@@ -31,14 +35,20 @@ const { className, buttonVariant = 'icon-button' } = Astro.props
 		const dropdowns = document.querySelectorAll('[data-dropdown]')
 
 		dropdowns.forEach(dropdown => {
-			if (!(dropdown instanceof HTMLElement) || dropdown.dataset.bound === 'true') {
+			if (
+				!(dropdown instanceof HTMLElement) ||
+				dropdown.dataset.bound === 'true'
+			) {
 				return
 			}
 
 			const trigger = dropdown.querySelector('[data-dropdown-trigger]')
 			const content = dropdown.querySelector('[data-dropdown-content]')
 
-			if (!(trigger instanceof HTMLElement) || !(content instanceof HTMLElement)) {
+			if (
+				!(trigger instanceof HTMLElement) ||
+				!(content instanceof HTMLElement)
+			) {
 				return
 			}
 
@@ -48,7 +58,7 @@ const { className, buttonVariant = 'icon-button' } = Astro.props
 				event.stopPropagation()
 
 				const dropdownContents = document.querySelectorAll(
-					'[data-dropdown-content]',
+					'[data-dropdown-content]'
 				)
 
 				if (content.classList.contains('hidden')) {

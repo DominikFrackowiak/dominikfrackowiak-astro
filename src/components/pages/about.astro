@@ -1,5 +1,39 @@
 ---
+import { useTranslations, getLangFromUrl } from '@/i18n/utils'
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 import Layout from '@/layouts/Layout.astro'
+import CenteringWrapper from '../atoms/centering-wrapper.astro'
+import HeadingTextBlock from '../organisms/heading-text-block.astro'
+import Waves from '../atoms/waves.astro'
 ---
 
-<Layout title='About'> ABOUT ME </Layout>
+<Layout title='About'>
+	<Waves class='h-35 w-full' />
+	<CenteringWrapper className='flex-col'>
+		<HeadingTextBlock headingText='About me'>
+			<p>
+				Before I even knew terms like layout or design, I was fascinated by
+				magazines and fanzines - especially those focused on music. It wasn’t
+				just the content that drew me in, but also the form: the way text,
+				photography, and graphics come together to create a cohesive whole. As a
+				teenager, I tried to create my own fanzine. Today I cringe a little
+				thinking about its imperfections, but the satisfaction of putting it
+				together was very real - and, in many ways, that hasn’t changed. Years
+				later, I found the same satisfaction in web development: I truly enjoy
+				translating the language of design into code. I now work mainly with
+				Astro.js, React/Next.js, and headless CMS, building interfaces that are
+				not only functional, but also visually consistent
+			</p>
+		</HeadingTextBlock>
+		<HeadingTextBlock headingText='hobbies'>
+			<p>{t('about.hobbies')}</p>
+		</HeadingTextBlock>
+		<HeadingTextBlock headingText='music'>
+			<p>{t('about.music')}</p>
+		</HeadingTextBlock>
+		<HeadingTextBlock headingText='film'>
+			<p>{t('about.film')}</p>
+		</HeadingTextBlock>
+	</CenteringWrapper>
+</Layout>
