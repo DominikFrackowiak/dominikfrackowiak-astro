@@ -1,7 +1,49 @@
 ---
-import Layout from '../../layouts/Layout.astro'
-// import waves from '../../assets/waves.svg?raw'
+import { getLangFromUrl } from '@/i18n/utils'
 import { getCollection } from 'astro:content'
+
+const lang = getLangFromUrl(Astro.url)
+
+import Layout from '../../layouts/Layout.astro'
+import HeadingTextBlock from '../organisms/heading-text-block.astro'
+import Button from '../atoms/button.astro'
+import Waves from '../atoms/waves.astro'
+// import waves from '../../assets/waves.svg?raw'
+
+const projects = await getCollection(
+	'projects',
+	({ data }) => data.lang === lang
+)
 ---
 
-<Layout title='Home'> PROJECTS </Layout>
+<Layout title='Home'>
+	<Waves class='h-35 w-full' />
+	{
+		projects.map(item => (
+			<a href={`/${item.data.lang}/projects/${item.data.slug}`}>
+				<HeadingTextBlock
+					headingText={item.data.title}
+					headingClassName='no-underline!'
+					className='gap-4'
+				>
+					<div class='flex flex-col gap-2.5'>
+						<p>{item.data.description.slice(0, 80)}...</p>
+						<Button variant='simple' className='self-start'>
+							View project &rarr;
+						</Button>
+					</div>
+					<div class='flex gap-2'>
+						{/* {item.data.tags.map(tag => (
+							<Button variant='simple'>{tag}</Button>
+						))} */}
+						<ul class='flex gap-2 text-dark/80 dark:text-light/60 text-md! font-light'>
+							{item.data.tags.map(el => (
+								<li>{el}</li>
+							))}
+						</ul>
+					</div>
+				</HeadingTextBlock>
+			</a>
+		))
+	}
+</Layout>

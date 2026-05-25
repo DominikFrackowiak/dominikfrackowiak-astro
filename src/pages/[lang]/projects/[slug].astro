@@ -1,0 +1,119 @@
+---
+import type { GetStaticPaths } from 'astro'
+import { getCollection, render } from 'astro:content'
+import { Image } from 'astro:assets'
+import Layout from '@/layouts/Layout.astro'
+import Button from '@/components/atoms/button.astro'
+import Waves from '@/components/atoms/waves.astro'
+import HeadingTextBlock from '@/components/organisms/heading-text-block.astro'
+import CenteringWrapper from '@/components/atoms/centering-wrapper.astro'
+import CloseIcon from '@/components/atoms/icons/close-icon.astro'
+
+const projectImageModules = import.meta.glob<{ default: ImageMetadata }>(
+	'/src/assets/images/projects/*.{png,jpg,jpeg,webp}',
+	{ eager: true }
+)
+
+export const getStaticPaths = (async () => {
+	const projects = await getCollection('projects')
+
+	return projects.map(project => ({
+		params: {
+			lang: project.data.lang,
+			slug: project.data.slug,
+		},
+		props: { project },
+	}))
+}) satisfies GetStaticPaths
+
+const { project } = Astro.props
+const { Content } = await render(project)
+const projectImages = project.data.image
+	.map(imagePath => projectImageModules[`/${imagePath}`]?.default)
+	.filter(image => image !== undefined)
+---
+
+<Layout title={project.data.title}>
+	<Waves class='h-35 w-full' />
+	<CenteringWrapper>
+		<Button as='a' variant='simple' href={`/${project.data.lang}/projects`}>
+			&larr; Back to projects
+		</Button>
+	</CenteringWrapper>
+
+	<HeadingTextBlock
+		headingText={project.data.title}
+		headingClassName='no-underline!'
+		className='gap-6'
+	>
+		<div class='flex flex-col gap-5 text-dark/80 dark:text-light/70'>
+			<p>{project.data.description}</p>
+			<ul class='flex flex-wrap gap-2 text-md! font-light'>
+				{project.data.tags.map(tag => <li>{tag}</li>)}
+			</ul>
+		</div>
+		<article class='max-w-none'>
+			<div class='flex flex-col gap-4 w-full max-w-90'>
+				{
+					projectImages.map(image => (
+						<Image
+							src={image}
+							alt={`Illustration from the ${project.data.title} project`}
+							class='project-image w-full h-auto cursor-pointer'
+						/>
+					))
+				}
+			</div>
+			<!-- <Content /> -->
+		</article>
+	</HeadingTextBlock>
+	<div class='fixed inset-0 z-60 overflow-y-auto hidden' id='full-image-modal'>
+		<button
+			id='full-image-close'
+			type='button'
+			aria-label='Close full image'
+			class='fixed top-10 right-10 z-70 bg-light/30 text-dark rounded-full p-2 cursor-pointer'
+		>
+			<CloseIcon />
+		</button>
+		<img src='' alt='' class='w-full z-30' id='full-image' />
+	</div>
+</Layout>
+
+<script>
+	function initFullImageModal() {
+		const images = document.querySelectorAll<HTMLImageElement>('.project-image')
+		const fullImage = document.querySelector<HTMLImageElement>('#full-image')
+		const fullImageModal =
+			document.querySelector<HTMLElement>('#full-image-modal')
+		const closeButton =
+			document.querySelector<HTMLButtonElement>('#full-image-close')
+
+		if (!fullImage || !fullImageModal || !closeButton) return
+
+		function openModal(image: HTMLImageElement) {
+			fullImage.src = image.currentSrc || image.src
+			fullImage.alt = image.alt
+			fullImageModal.classList.remove('hidden')
+		}
+
+		function closeModal() {
+			fullImageModal.classList.add('hidden')
+			fullImage.removeAttribute('src')
+			fullImage.alt = ''
+		}
+
+		images.forEach(image =>
+			image.addEventListener('click', () => {
+				openModal(image)
+			})
+		)
+
+		closeButton.addEventListener('click', closeModal)
+		document.addEventListener('keydown', event => {
+			if (event.key === 'Escape') closeModal()
+		})
+	}
+
+	document.addEventListener('astro:page-load', initFullImageModal)
+</script>

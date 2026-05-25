@@ -6,13 +6,14 @@ import Heading from '../atoms/heading.astro'
 interface Props {
 	headingText: string
 	className?: string
+	headingClassName?: string
 }
 
-const { headingText, className } = Astro.props
+const { headingText, headingClassName, className } = Astro.props
 ---
 
 <CenteringWrapper className={cn('flex-col gap-10 py-8!', className)}>
-	<Heading>{headingText}</Heading>
+	<Heading className={headingClassName}>{headingText}</Heading>
 	<!-- <Technologies /> -->
 	<slot />
 </CenteringWrapper>

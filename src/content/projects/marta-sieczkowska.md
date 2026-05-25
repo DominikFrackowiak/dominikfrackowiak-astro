@@ -1,4 +1,0 @@
----
----
-
-# MARTA SIECZKOWSKA - PORTFOLIO

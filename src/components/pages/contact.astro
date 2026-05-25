@@ -22,13 +22,21 @@ const homeUrl = `/${locale}`
 <Layout title='Contact'>
 	<Waves class='h-35 w-full' />
 	<CenteringWrapper className='flex-col gap-10 py-10'>
+		<Heading className='mb-10'>CONTACT</Heading>
+		<p>
+			Disponible para proyectos frontend, colaboraciones y trabajo freelance
+			selectivo.
+		</p>
+		<span>LinkedIn</span>
+		<span>GitHub</span>
+		<span>E-mail</span>
+		<Heading className='no-underline'>CONTACT FORM:</Heading>
 		<form
 			action='https://api.web3forms.com/submit'
 			method='POST'
 			class='flex flex-col items-start w-full lg:w-1/2 max-w-90 gap-5'
 			id='contact'
 		>
-			<Heading className='mb-10'>CONTACT FORM</Heading>
 			<input type='hidden' name='redirect' value={redirectUrl} />
 			<input
 				type='hidden'

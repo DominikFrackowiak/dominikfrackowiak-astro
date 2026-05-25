@@ -6,11 +6,13 @@ interface Props {
 }
 
 const { className } = Astro.props
+
+// underline underline-offset-10 decoration-accent decoration-1
 ---
 
 <h2
 	class={cn(
-		'text-dark uppercase dark:text-light font-light tracking-heading text-xl underline underline-offset-10 decoration-accent decoration-1',
+		'text-dark uppercase dark:text-light font-light tracking-heading text-xl ',
 		className
 	)}
 >
