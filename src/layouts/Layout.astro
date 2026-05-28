@@ -4,16 +4,33 @@ import { ClientRouter } from 'astro:transitions'
 import Header from '@/components/organisms/header.astro'
 import Footer from '@/components/organisms/footer.astro'
 import Waves from '@/components/atoms/waves.astro'
+import Hero from '@/components/organisms/hero.astro'
+import TitleWaves from '@/components/organisms/title-waves.astro'
+import Heading from '@/components/atoms/heading.astro'
 
 interface Props {
+	heading?: string
+	isHome?: boolean
+	subHeading?: string
 	title: string
+	titleWavesVariant?: 'small' | 'full'
 	className?: string
+	metadescription?: string
 }
 import '../styles/global.css'
 
-const { title, className } = Astro.props
+const {
+	className,
+	isHome,
+	metadescription,
+	title,
+	titleWavesVariant = 'full',
+	heading,
+	subHeading,
+} = Astro.props
 
 // <div class='flex flex-col gap-20 relative z-10'>
+// <Waves class='h-35 w-full' />
 ---
 
 <!doctype html>
@@ -27,9 +44,28 @@ const { title, className } = Astro.props
 		<title>Dominik Frackowiak | {title}</title>
 		<ClientRouter />
 	</head>
-	<body class='flex flex-col bg-light dark:bg-dark'>
+	<body class='flex min-h-screen flex-col bg-light dark:bg-dark'>
 		<Header />
-		<main class={cn('bg-light dark:bg-dark flex-1 gap-20 py-10', className)}>
+		{
+			isHome ? (
+				<Hero />
+			) : (
+				<TitleWaves
+					variant={titleWavesVariant}
+					heading={heading}
+					subHeading={subHeading}
+				>
+					<slot name='title-waves' slot='title-waves' />
+				</TitleWaves>
+			)
+		}
+		<main
+			class={cn(
+				'flex flex-col flex-1 gap-16 w-full max-w-6xl mx-auto px-4  mb-24 z-10',
+				isHome ? 'mt-16' : 'mt-20 md:mt-16',
+				className
+			)}
+		>
 			<slot />
 		</main>
 

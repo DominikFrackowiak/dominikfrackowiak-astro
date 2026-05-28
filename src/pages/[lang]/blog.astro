@@ -1,13 +1,13 @@
 ---
 import type { GetStaticPaths } from 'astro'
-import ProjectsPage from '@/components/pages/projects.astro'
+import BlogPage from '@/components/pages/blog.astro'
 import { languages } from '@/i18n/ui'
 
 export const getStaticPaths = (() => {
 	return Object.keys(languages).map(lang => ({
-		params: { lang }
+		params: { lang },
 	}))
 }) satisfies GetStaticPaths
 ---
 
-<ProjectsPage />
+<BlogPage />

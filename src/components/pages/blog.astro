@@ -1,8 +1,43 @@
 ---
+import { getLangFromUrl } from '@/i18n/utils'
+import { getCollection } from 'astro:content'
+
+const lang = getLangFromUrl(Astro.url)
+
 import Layout from '../../layouts/Layout.astro'
-// import waves from '../../assets/waves.svg?raw'
+import HeadingTextBlock from '../organisms/heading-text-block.astro'
+import Button from '../atoms/button.astro'
+
+const blog = await getCollection('blog', ({ data }) => data.lang === lang)
 ---
 
-<Layout title='Home'>
-	BLOG COÑO
+<Layout title='Home' heading='BLOG'>
+	{
+		blog.map(item => (
+			<a href={`/${item.data.lang}/blog/${item.data.slug}`}>
+				<HeadingTextBlock
+					headingText={item.data.title}
+					headingClassName='no-underline!'
+					className='gap-4'
+				>
+					<div class='flex flex-col gap-2.5'>
+						<p>{item.data.description.slice(0, 80)}...</p>
+						<Button variant='go-back' className='self-start'>
+							Read post &rarr;
+						</Button>
+					</div>
+					<div class='flex gap-2'>
+						{/* {item.data.tags.map(tag => (
+							<Button variant='simple'>{tag}</Button>
+						))} */}
+						<ul class='flex gap-2 text-dark/80 dark:text-light/60 text-md! font-light'>
+							{item.data.tags?.map(el => (
+								<li>{el}</li>
+							))}
+						</ul>
+					</div>
+				</HeadingTextBlock>
+			</a>
+		))
+	}
 </Layout>

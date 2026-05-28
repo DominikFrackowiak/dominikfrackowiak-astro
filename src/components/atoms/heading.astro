@@ -1,20 +1,26 @@
 ---
 import { cn } from '@/utils/cn'
 
+type headingTag = 'h1' | 'h2' | 'h3'
+
 interface Props {
 	className?: string
+	as?: headingTag
 }
 
-const { className } = Astro.props
+const { className, as = 'h2' } = Astro.props
+
+const Tag = as
 
 // underline underline-offset-10 decoration-accent decoration-1
 ---
 
-<h2
+<Tag
 	class={cn(
-		'text-dark uppercase dark:text-light font-light tracking-heading text-xl ',
+		'text-dark uppercase dark:text-light font-light  text-xl',
+		as === 'h1' ? 'tracking-heading-one text-accent!' : 'tracking-heading',
 		className
 	)}
 >
 	<slot />
-</h2>
+</Tag>

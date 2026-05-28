@@ -31,3 +31,8 @@ export const socialNavigation = [
  { label: 'WhatsApp', url: 'https://wa.me/34654114393?text=Hello', icon: WhatsappIcon },
 ] as const
 
+export const languagePickerItems = [{
+ title: 'ENGLISH',
+ 
+}]
+

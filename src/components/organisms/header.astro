@@ -1,7 +1,7 @@
 ---
 import { getLangFromUrl } from '@/i18n/utils'
 import Logo from '@/components/atoms/logo.astro'
-import CenteringWrapper from '@/components/atoms/centering-wrapper.astro'
+
 import ScrollIndicator from '../molecules/scroll-indicator.astro'
 // import HeaderActions from './header-actions.astro'
 import Dropdown from '../molecules/dropdown.astro'
@@ -9,6 +9,7 @@ import EarthIcon from '../atoms/icons/earth-icon.astro'
 import HamburgerIcon from '../atoms/icons/hamburger-icon.astro'
 import ThemePicker from '../molecules/theme-picker.astro'
 import Navigation from '../molecules/navigation.astro'
+import NavigationMobile from '../molecules/navigation-mobile.astro'
 const lang = getLangFromUrl(Astro.url)
 const currentPath = Astro.url.pathname
 
@@ -20,33 +21,42 @@ function getNewPath(newLocale: string) {
 }
 ---
 
-<header class='fixed top-0 left-0 z-50 w-screen bg-dark dark:bg-accent py-3.5'>
+<header class='fixed top-0 left-0 z-50 w-screen bg-dark dark:bg-accent py-4'>
 	<ScrollIndicator />
-	<CenteringWrapper className='justify-between items-center'>
+	<div class='flex justify-between max-w-6xl mx-auto items-center px-4'>
 		<Logo />
 
-		<div class='flex items-center gap-7 h-full'>
+		<div class='flex items-center gap-4 md:gap-7 h-full'>
 			<Navigation />
 			<ThemePicker />
 			<Dropdown>
 				<EarthIcon slot='trigger' />
-				<ul>
+				<ul class='flex flex-col gap-2'>
 					<li>
-						<a href={getNewPath('en')}>English</a>
+						<a
+							href={getNewPath('en')}
+							class='text-dark! dark:text-light! font-light! hover:[text-shadow:0_0_0_currentColor] uppercase tracking-heading'
+							>English</a
+						>
 					</li><li>
-						<a href={getNewPath('pl')}>Polski</a>
+						<a
+							href={getNewPath('pl')}
+							class='text-dark! dark:text-light! font-light! hover:[text-shadow:0_0_0_currentColor] uppercase tracking-heading'
+							>Polski</a
+						>
 					</li><li>
-						<a href={getNewPath('es')}>Español</a>
+						<a
+							href={getNewPath('es')}
+							class='text-dark! dark:text-light! font-light! hover:[text-shadow:0_0_0_currentColor] uppercase tracking-heading'
+							>Español</a
+						>
 					</li>
 				</ul>
 			</Dropdown>
-			<Dropdown wrapperClassName='block lg:hidden'>
+			<Dropdown wrapperClassName='flex lg:hidden'>
 				<HamburgerIcon slot='trigger' />
-				<ul>
-					<li><a href={`/${lang}/projects`}>PROJECTS</a></li>
-					<li><a href={`/${lang}/blog`}>BLOG</a></li>
-				</ul>
+				<NavigationMobile />
 			</Dropdown>
 		</div>
-	</CenteringWrapper>
+	</div>
 </header>

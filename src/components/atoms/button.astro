@@ -2,24 +2,26 @@
 import { cn } from '@/utils/cn'
 import type { HTMLAttributes } from 'astro/types'
 
-type ButtonTag = 'button' | 'a'
-interface Props extends HTMLAttributes<'button'> {
-	className?: string
-	variant?: 'icon-button' | 'regular' | 'go-back' | 'simple' | 'cta'
-	type?: 'button' | 'submit'
-	cb?: () => void
-	as?: ButtonTag
-	href?: string
-}
-
 const buttonVariants = {
 	'icon-button': 'text-light text-2xl border-none',
 	regular:
 		'text-dark dark:text-light border border-dark dark:border-light rounded-4xl px-3 py-1.5 text-sm hover:opacity-85',
 	cta: 'text-light border border-accent bg-accent dark:border-accent rounded-4xl px-3 py-1.5 text-sm hover:opacity-85',
-	'go-back': 'text-lg text-accent',
+	'go-back': 'text-md border-none text-lg text-accent/80',
 	simple: 'text-md border-none text-dark/80 dark:text-light/80',
-}
+} as const
+
+type ButtonVariant = keyof typeof buttonVariants
+type ButtonTag = 'button' | 'a'
+
+type Props = {
+	className?: string
+	variant?: ButtonVariant
+	as?: ButtonTag
+	href?: string
+	type?: 'button' | 'submit'
+	cb?: () => void
+} & (HTMLAttributes<'button'> | HTMLAttributes<'a'>)
 
 const {
 	className,
@@ -29,7 +31,7 @@ const {
 	as = 'button',
 	href,
 	...props
-} = Astro.props
+} = Astro.props as Props
 const Tag = as
 ---
 

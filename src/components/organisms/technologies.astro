@@ -8,7 +8,9 @@ import {
 } from '@/constants/technologies'
 ---
 
-<section class='w-full flex justify-between gap-2'>
+<section
+	class='w-full flex flex-col gap-6 lg:gap-2 lg:flex-row lg:justify-between'
+>
 	<TechnologyCard technology={frontend} category='Frontend' />
 	<TechnologyCard technology={backend} category='Backend' />
 	<TechnologyCard technology={tools} category='Tools' />

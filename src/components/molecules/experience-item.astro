@@ -9,17 +9,22 @@ interface Props {
 const { company, position, description, technologies } = Astro.props
 ---
 
-<article class='flex flex-col gap-8'>
-	<header class='flex items-center justify-between text-accent'>
-		<h3 class='uppercase'>{company}</h3>
-		<p class='text-sm!'>{position}</p>
-	</header>
+<article class='flex flex-col gap-6'>
+	<div class='flex flex-col gap-2'>
+		<header
+			class='flex flex-col gap-1 md:flex-row items-start md:items-center justify-between text-accent'
+		>
+			<h3 class='uppercase'>{company}</h3>
+			<p class='text-list! text-accent!'>{position}</p>
+		</header>
 
-	<p>
-		{description}
-	</p>
-
-	<ul class='flex gap-2 text-dark/80 dark:text-light/60 text-md! font-light'>
+		<p>
+			{description}
+		</p>
+	</div>
+	<ul
+		class='flex gap-2 text-dark/80 dark:text-light/50 text-md! font-light flex-wrap'
+	>
 		{technologies.map(el => <li>{el}</li>)}
 	</ul>
 </article>

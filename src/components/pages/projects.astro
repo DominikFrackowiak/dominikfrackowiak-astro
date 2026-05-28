@@ -7,35 +7,42 @@ const lang = getLangFromUrl(Astro.url)
 import Layout from '../../layouts/Layout.astro'
 import HeadingTextBlock from '../organisms/heading-text-block.astro'
 import Button from '../atoms/button.astro'
-import Waves from '../atoms/waves.astro'
-// import waves from '../../assets/waves.svg?raw'
+
+const projectImageModules = import.meta.glob<string>(
+	'/src/assets/images/projects/*.{png,jpg,jpeg,webp}',
+	{ eager: true, import: 'default', query: '?url' }
+)
 
 const projects = await getCollection(
 	'projects',
 	({ data }) => data.lang === lang
 )
+
+const projectsWithThumbnails = projects.map(project => ({
+	...project,
+	thumbnailUrl: projectImageModules[`/${project.data.image[0]}`],
+}))
 ---
 
-<Layout title='Home'>
-	<Waves class='h-35 w-full' />
+<Layout title='Home' heading='SOME OF MY WORKS'>
 	{
-		projects.map(item => (
-			<a href={`/${item.data.lang}/projects/${item.data.slug}`}>
+		projectsWithThumbnails.map(item => (
+			<a
+				href={`/${item.data.lang}/projects/${item.data.slug}`}
+				class='flex flex-col md:flex-row gap-8 justify-between items-start w-full z-50'
+			>
 				<HeadingTextBlock
 					headingText={item.data.title}
 					headingClassName='no-underline!'
-					className='gap-4'
+					className='gap-4 order-1 md:order-0'
 				>
 					<div class='flex flex-col gap-2.5'>
 						<p>{item.data.description.slice(0, 80)}...</p>
-						<Button variant='simple' className='self-start'>
+						<Button variant='go-back' className='self-start'>
 							View project &rarr;
 						</Button>
 					</div>
 					<div class='flex gap-2'>
-						{/* {item.data.tags.map(tag => (
-							<Button variant='simple'>{tag}</Button>
-						))} */}
 						<ul class='flex gap-2 text-dark/80 dark:text-light/60 text-md! font-light'>
 							{item.data.tags.map(el => (
 								<li>{el}</li>
@@ -43,6 +50,14 @@ const projects = await getCollection(
 						</ul>
 					</div>
 				</HeadingTextBlock>
+				<div
+					class='w-full h-45 md:w-20 md:h-20 shrink-0 border bg-cover bg-start md:bg-center order-0 md:order-1 bg-no-repeat'
+					style={
+						item.thumbnailUrl
+							? `background-image: url('${item.thumbnailUrl}')`
+							: undefined
+					}
+				/>
 			</a>
 		))
 	}

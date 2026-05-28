@@ -4,9 +4,10 @@ lang: en
 key: marta-sieczkowska
 description: Temporary case study placeholder for a personal portfolio website focused on visual identity, responsive layout, and content presentation.
 slug: marta-sieczkowska
+url: 'https://martasieczkowska.com'
 image:
-  - src/assets/images/projects/marta-sieczkowska-home.png
-  - src/assets/images/projects/marta-sieczkowska-detail.png
+  - src/assets/images/projects/marta-sieczkowska-home.webp
+  - src/assets/images/projects/marta-sieczkowska-detail.webp
 tags:
   - Astro
   - Portfolio
