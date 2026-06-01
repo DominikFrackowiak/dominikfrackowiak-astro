@@ -13,6 +13,7 @@ longDescription: |
 
   Oryginalna aplikacja została zbudowana w HTML, SCSS, vanilla JavaScript i z niewielkim udziałem Reacta. Niedawno przebudowałem ją w Astro.js, React.js, TypeScript i Tailwind CSS, dzięki czemu projekt jest łatwiejszy w utrzymaniu, wydajniejszy i nadal lekki.
 slug: realidades-caleidoscopicas
+metaDescription: ''
 image:
   - src/assets/images/projects/realidades-caleidoscopicas.png
 tags:

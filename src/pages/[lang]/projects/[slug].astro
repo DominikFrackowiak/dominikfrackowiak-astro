@@ -2,6 +2,9 @@
 import type { GetStaticPaths } from 'astro'
 import { getCollection } from 'astro:content'
 import { Image } from 'astro:assets'
+import { useTranslations, getLangFromUrl } from '@/i18n/utils'
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 import Layout from '@/layouts/Layout.astro'
 import Button from '@/components/atoms/button.astro'
 import CloseIcon from '@/components/atoms/icons/close-icon.astro'
@@ -37,6 +40,7 @@ const longDescriptionBlocks = project.data.longDescription
 	title={project.data.title}
 	heading={project.data.title}
 	subHeading={project.data.subtitle}
+	metadescription={project.data.metaDescription}
 >
 	<Button
 		as='a'
@@ -45,7 +49,7 @@ const longDescriptionBlocks = project.data.longDescription
 		slot='title-waves'
 		className='text-dark dark:text-light/80!'
 	>
-		&larr; Back to projects
+		&larr; {t('projects.backToProjects')}
 	</Button>
 
 	<article class='flex flex-col lg:flex-row justify-between gap-20 max-w-none'>
@@ -56,17 +60,16 @@ const longDescriptionBlocks = project.data.longDescription
 			<div class='flex flex-col gap-2'>
 				{
 					project.data.url ? (
-					
-							<Button
-		as='a'
-		variant='go-back'
-		href={project.data.url}
-		slot='title-waves'
-		className='text-dark dark:text-light/80!'
-  target='_blank'
-	>
-		&rarr;
-	</Button>
+						<Button
+							as='a'
+							variant='go-back'
+							href={project.data.url}
+							slot='title-waves'
+							className='text-dark dark:text-light/80!'
+							target='_blank'
+						>
+							{t('projects.liveWebsite')} &rarr;
+						</Button>
 					) : null
 				}
 				<ul class='flex flex-wrap gap-2 text-md! text-light!'>

@@ -1,12 +1,14 @@
 ---
-import { getLangFromUrl } from '@/i18n/utils'
 import { getCollection } from 'astro:content'
+import { useTranslations, getLangFromUrl } from '@/i18n/utils'
 
 const lang = getLangFromUrl(Astro.url)
 
 import Layout from '../../layouts/Layout.astro'
 import HeadingTextBlock from '../organisms/heading-text-block.astro'
 import Button from '../atoms/button.astro'
+
+const t = useTranslations(lang)
 
 const projectImageModules = import.meta.glob<string>(
 	'/src/assets/images/projects/*.{png,jpg,jpeg,webp}',
@@ -24,7 +26,12 @@ const projectsWithThumbnails = projects.map(project => ({
 }))
 ---
 
-<Layout title='Home' heading='SOME OF MY WORKS'>
+<Layout
+	title={t('projects.title')}
+	heading={t('projects.title')}
+	subHeading={t('projects.subHeading')}
+	metadescription={t('projects.metadescription')}
+>
 	{
 		projectsWithThumbnails.map(item => (
 			<a
@@ -39,7 +46,7 @@ const projectsWithThumbnails = projects.map(project => ({
 					<div class='flex flex-col gap-2.5'>
 						<p>{item.data.shortDescription.slice(0, 80)}...</p>
 						<Button variant='go-back' className='self-start'>
-							View project &rarr;
+							{t('projects.viewProject')} &rarr;
 						</Button>
 					</div>
 					<div class='flex gap-2'>
@@ -51,7 +58,7 @@ const projectsWithThumbnails = projects.map(project => ({
 					</div>
 				</HeadingTextBlock>
 				<div
-					class='w-full h-45 md:w-20 md:h-20 shrink-0 border bg-cover bg-start md:bg-center order-0 md:order-1 bg-no-repeat'
+					class='w-full h-45 md:w-20 md:h-20 shrink-0 bg-cover bg-start md:bg-center order-0 md:order-1 bg-no-repeat'
 					style={
 						item.thumbnailUrl
 							? `background-image: url('${item.thumbnailUrl}')`

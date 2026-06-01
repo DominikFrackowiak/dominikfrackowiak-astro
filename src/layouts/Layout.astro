@@ -1,12 +1,14 @@
 ---
+import { useTranslations, getLangFromUrl } from '@/i18n/utils'
+const lang = getLangFromUrl(Astro.url)
 import { cn } from '@/utils/cn'
 import { ClientRouter } from 'astro:transitions'
 import Header from '@/components/organisms/header.astro'
 import Footer from '@/components/organisms/footer.astro'
-import Waves from '@/components/atoms/waves.astro'
 import Hero from '@/components/organisms/hero.astro'
 import TitleWaves from '@/components/organisms/title-waves.astro'
-import Heading from '@/components/atoms/heading.astro'
+
+const t = useTranslations(lang)
 
 interface Props {
 	heading?: string
@@ -28,13 +30,10 @@ const {
 	heading,
 	subHeading,
 } = Astro.props
-
-// <div class='flex flex-col gap-20 relative z-10'>
-// <Waves class='h-35 w-full' />
 ---
 
 <!doctype html>
-<html lang='en' class='dark' data-theme='dark'>
+<html lang={lang} class='dark' data-theme='dark'>
 	<head>
 		<meta charset='UTF-8' />
 		<meta name='viewport' content='width=device-width' />
@@ -42,13 +41,20 @@ const {
 		<link rel='icon' href='/favicon.ico' />
 		<meta name='generator' content={Astro.generator} />
 		<title>Dominik Frackowiak | {title}</title>
+		<meta name='description' content={metadescription} />
 		<ClientRouter />
 	</head>
 	<body class='flex min-h-screen flex-col bg-light dark:bg-dark'>
 		<Header />
 		{
 			isHome ? (
-				<Hero />
+				<Hero
+					copy1={t('hero.hello1')}
+					copy2={t('hero.hello2')}
+					copy3={t('hero.hello3')}
+					contactButtonContent={t('hero.btn.contact')}
+					viewProjectsButtonContent={t('hero.btn.viewProjects')}
+				/>
 			) : (
 				<TitleWaves
 					variant={titleWavesVariant}

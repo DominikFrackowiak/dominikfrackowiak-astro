@@ -3,6 +3,7 @@ title: React-PDF with Next.js
 lang: en
 key: react-pdf-with-next-js
 description: How to generate, preview, and download dynamic PDF files in a Next.js app with React-PDF.
+metaDescription: ''
 slug: react-pdf-with-next-js
 tags:
   - Next.js

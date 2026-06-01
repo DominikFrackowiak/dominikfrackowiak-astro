@@ -5,14 +5,20 @@ import Button from '../atoms/button.astro'
 import CenteringWrapper from '../atoms/centering-wrapper.astro'
 import Waves from '../atoms/waves.astro'
 
-// pt-50
-// section: min-h-[75vh]
-// class='h-40 w-40 rounded-full border-2 border-accent z-10'
-// max-w-140
+interface Props {
+	contactButtonContent: string
+	viewProjectsButtonContent: string
+	copy1: string
+	copy2: string
+	copy3: string
+}
+
+const { contactButtonContent, viewProjectsButtonContent, copy1, copy2, copy3 } =
+	Astro.props
 ---
 
 <section
-	class='flex w-full gap-20 pb-20 md:pb-40 waves-bg relative isolate overflow-hidden pt-10 md:pt-20 px-4'
+	class='flex w-full gap-20 pb-20 md:pb-40 waves-bg relative isolate overflow-hidden pt-10 md:pt-20'
 >
 	<Waves
 		class='absolute inset-0 z-0 h-full w-full text-accent'
@@ -24,12 +30,12 @@ import Waves from '../atoms/waves.astro'
 		densityEase={1.35}
 	/>
 	<div
-		class='absolute inset-0 z-1 h-full w-full bg-linear-to-b from-transparent to-light dark:to-dark/80'
+		class='absolute inset-0 z-1 h-full w-full bg-linear-to-b from-transparent to-light dark:to-dark'
 		1
 	>
 	</div>
 	<CenteringWrapper
-		className='flex flex-col justify-between items-start pt-20 relative z-10 gap-8'
+		className='flex flex-col justify-between items-start pt-20 relative z-10 gap-8 px-4'
 	>
 		<div class='flex justify-start w-full md:w-2/6'>
 			<Image
@@ -40,21 +46,19 @@ import Waves from '../atoms/waves.astro'
 		</div>
 		<div class='flex flex-col gap-6 w-4/5 pt-5'>
 			<p
-				class='flex flex-col gap-4 text-dark dark:text-light text-justify text-hero! leading-6 dark:leading-8! font-normal! dark:font-light! uppercase tracking-wide'
+				class='flex flex-col gap-3 text-dark dark:text-light text-justify text-hero! leading-6 dark:leading-8! font-normal! dark:font-light! uppercase tracking-wide'
 			>
-				<span
-					>Hola, soy Dominik Frąckowiak. Frontend developer basado en Madrid.</span
-				>
-				<span>Este sitio reúne proyectos, notas y experimentos personales.</span
-				>
+				<span>{copy1}</span>
+				<span>{copy2}</span>
+				<span>{copy3}</span>
 			</p>
 
 			<div class='flex w-full gap-3 justify-start'>
 				<Button as='a' variant='regular' href='/es/contact'
-					>Contacta cónmigo</Button
+					>{contactButtonContent}</Button
 				>
 				<Button as='a' variant='cta' href='/es/projects'
-					>Ver los proyectos</Button
+					>{viewProjectsButtonContent}</Button
 				>
 			</div>
 		</div>

@@ -1,11 +1,13 @@
 ---
+import { useTranslations, getLangFromUrl } from '@/i18n/utils'
+const lang = getLangFromUrl(Astro.url)
+
 import Layout from '@/layouts/Layout.astro'
 import Button from '../atoms/button.astro'
-import Heading from '../atoms/heading.astro'
 import Modal from '../organisms/modal.astro'
-import TitleWaves from '../organisms/title-waves.astro'
 
 const locale = Astro.currentLocale ?? 'en'
+const t = useTranslations(lang)
 
 const baseUrl = import.meta.env.DEV
 	? 'http://localhost:4321'
@@ -16,17 +18,11 @@ const contactUrl = `/${locale}/contact`
 const homeUrl = `/${locale}`
 ---
 
-<!-- <TitleWaves>
-	<Heading as='h1'>CONTACT</Heading>
-	<p>
-		Disponible para proyectos frontend, colaboraciones y trabajo freelance
-		selectivo.
-	</p>
-</TitleWaves> -->
 <Layout
-	title='Contact'
-	heading='CONTACT ME'
-	subHeading='FEEL FREE TO CONTACT ME'
+	title={t('contact.title')}
+	heading={t('contact.title')}
+	subHeading={t('contact.subHeading')}
+	metadescription={t('contact.metadescription')}
 >
 	<div class='flex flex-col md:flex-row justify-between items-start gap-16'>
 		<div class='flex flex-col gap-4 w-full md:w-1/2'>
@@ -43,22 +39,22 @@ const homeUrl = `/${locale}`
 					value={import.meta.env.PUBLIC_WEB3FORMS_KEY}
 				/>
 				<div class='flex flex-col gap-2 w-full'>
-					<label for='name'>Name:</label>
+					<label for='name'>{t('contact.form.name')}</label>
 					<input type='text' name='name' required id='name' />
 				</div>
 				<div class='flex flex-col gap-2 w-full'>
-					<label for='email'>E-mail:</label>
+					<label for='email'>{t('contact.form.email')}</label>
 					<input type='email' name='email' required id='email' />
 				</div>
 				<div class='flex flex-col gap-2 w-full'>
-					<label for='message'>Message:</label>
+					<label for='message'>{t('contact.form.message')}</label>
 					<textarea name='message' required id='message'></textarea>
 				</div>
 				<!-- <div class='h-19.5 w-76 origin-top-left scale-[0.7]'>
 			<div class='h-captcha h-full' data-captcha='true'></div>
 		</div> -->
 
-				<Button type='submit' className='mt-4'>Sent the message</Button>
+				<Button type='submit' className='mt-4'>{t('contact.form.cta')}</Button>
 			</form>
 		</div>
 		<div

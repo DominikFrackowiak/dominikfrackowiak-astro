@@ -4,6 +4,7 @@ lang: pl
 key: react-pdf-with-next-js
 description: Jak generować, wyświetlać i pobierać dynamiczne pliki PDF w aplikacji Next.js z użyciem React-PDF.
 slug: react-pdf-with-next-js
+metaDescription: ''
 tags:
   - Next.js
   - React-PDF

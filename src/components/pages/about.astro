@@ -4,26 +4,21 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 import Layout from '@/layouts/Layout.astro'
 
-
 import HeadingTextBlock from '../organisms/heading-text-block.astro'
 ---
 
-
-<Layout title='About' heading="ABOUT ME" subHeading="few of the things that made me the way i am">
+<Layout
+	title={t('about.title')}
+	heading={t('about.title')}
+	subHeading={t('about.subHeading')}
+	metadescription={t('about.metadescription')}
+>
 	<p>
-		Before I even knew terms like layout or design, I was fascinated by
-		magazines and fanzines - especially those focused on music. It wasn’t just
-		the content that drew me in, but also the form: the way text, photography,
-		and graphics come together to create a cohesive whole. As a teenager, I
-		tried to create my own fanzine. Today I cringe a little thinking about its
-		imperfections, but the satisfaction of putting it together was very real -
-		and, in many ways, that hasn’t changed. Years later, I found the same
-		satisfaction in translating the language of
-		design into code. 
+		{t('about.intro')}
 	</p>
 
-	<HeadingTextBlock headingText='hobbies'>
-		<p>{t('about.hobbies')}</p>
+	<HeadingTextBlock headingText={t('about.hobbies.title')}>
+		<p>{t('about.hobbies.text')}</p>
 	</HeadingTextBlock>
 	<HeadingTextBlock headingText='music'>
 		<p>{t('about.music')}</p>

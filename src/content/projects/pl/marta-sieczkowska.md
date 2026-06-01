@@ -5,6 +5,7 @@ lang: pl
 key: marta-sieczkowska
 shortDescription: Minimalistyczne portfolio ilustratorki i graficzki Marty Sieczkowskiej, zbudowane w Next.js i oparte na Headless WordPress CMS.
 longDescription: Marta Sieczkowska jest wyjątkowo utalentowaną ilustratorką i graficzką. Miałem przyjemność przełożyć jej precyzyjny kierunek kreatywny na minimalistyczną stronę portfolio. Projekt wymagał pełnej kontroli nad warstwą frontendową, a jednocześnie Marta potrzebowała CMS-a do wygodnego zarządzania treścią. Zbudowałem stronę w Next.js i połączyłem ją z Headless WordPress API, dzięki czemu projekt zyskał znajomy backend bez ograniczeń narzucanych przez gotowe szablony.
+metaDescription: Strona portfolio ilustratorki i projektantki graficznej Marty Sieczkowskiej, zbudowana w oparciu o Next.js i Headless WordPress. Indywidualnie zaprojektowany frontend skupiony na prezentacji prac, wydajności i łatwym zarządzaniu treścią.
 slug: marta-sieczkowska
 image:
   - src/assets/images/projects/marta-sieczkowska-home.webp

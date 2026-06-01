@@ -17,6 +17,7 @@ const projects = defineCollection({
  schema: z.object({
   title: z.string(),
   subtitle: z.string(),
+  metaDescription: z.string(),
   lang: z.enum(['en', 'es', 'pl']),
   url: z.string().optional(),
   key: z.string(),
@@ -37,6 +38,7 @@ const blog = defineCollection({
  }),
  schema: z.object({
   title: z.string(),
+  metaDescription: z.string(),
   lang: z.enum(['en', 'es', 'pl']),
   url: z.string().optional(),
   key: z.string(),

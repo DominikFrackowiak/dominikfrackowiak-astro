@@ -10,9 +10,7 @@ import ExperienceItem from '../molecules/experience-item.astro'
 import { experience } from '@/constants/experience'
 ---
 
-<Layout title='Home' isHome>
-	
-
+<Layout title='Home' isHome metadescription={t('home.metadescription')}>
 	<HeadingTextBlock headingText={t('experience.section.title')}>
 		{
 			experience.map(el => (
@@ -26,14 +24,11 @@ import { experience } from '@/constants/experience'
 		}
 	</HeadingTextBlock>
 
-	<HeadingTextBlock headingText='TECHNOLOGIES'>
+	<HeadingTextBlock headingText={t('technologies.section.title')}>
 		<Technologies />
 	</HeadingTextBlock>
 
-	<HeadingTextBlock headingText='LANGUAGES'>
-		<p>
-			Soy un hablante nativo del polaco, certificado en B2 en inglés y C2 en
-			español.
-		</p>
+	<HeadingTextBlock headingText={t('languages.section.title')}>
+		<p>{t('languages')}</p>
 	</HeadingTextBlock>
 </Layout>

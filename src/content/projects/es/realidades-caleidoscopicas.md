@@ -13,6 +13,7 @@ longDescription: |
 
   La aplicación original se construyó con HTML, SCSS, JavaScript vanilla y una pequeña parte de React. Más recientemente la reconstruí con Astro.js, React.js, TypeScript y Tailwind CSS, haciendo que el proyecto sea más fácil de mantener, más eficiente y siga siendo ligero.
 slug: realidades-caleidoscopicas
+metaDescription: ''
 image:
   - src/assets/images/projects/realidades-caleidoscopicas.png
 tags:
