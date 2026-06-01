@@ -16,10 +16,12 @@ const projects = defineCollection({
  }),
  schema: z.object({
   title: z.string(),
+  subtitle: z.string(),
   lang: z.enum(['en', 'es', 'pl']),
   url: z.string().optional(),
   key: z.string(),
-  description: z.string(),
+  shortDescription: z.string(),
+  longDescription: z.string(),
   slug: z.string(),
   image: z.array(z.string()),
   tags: z.array(z.string())

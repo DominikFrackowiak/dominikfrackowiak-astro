@@ -29,8 +29,11 @@ export const ui = {
   'experience.position.selfemployed': 'Webmaster',
   'experience.description.selfemployed': 'Created websites and early frontend projects using HTML, CSS and vanilla JavaScript.',
   'about.hobbies': 'I am interested in social issues and politics. I am a vegetarian and an animal lover(I share my life with two Andalusian Bodeguero dogs: Yoko & Sugus < 3).I am a cyclist and a nature enthusiast.I enjoy traveling outside the city and spending nights surrounded by nature in my small van.',
-  'about.music': 'I am musically polyamorous :), my list of favorite musicians is very long and includes: Swans, Sonic Youth, Armia, Crass, Neurosis, Killing Joke, The Cure, New Model Army, Izrael, Vangelis, Depeche Mode, Massive Attack, Godflesh, Discharge, David Bowie, Brian Eno, Brygada Kryzys, Portishead, Black Uhuru, Tricky, Public Image Limited, Conflict, Henryk Mikołaj Górecki, Chumbawamba, Siekiera, Cocteau Twins, Joy Division, Fugazi, Bad Brains, and many, many others.',
-  'about.film': "I enjoy cinema (Buñuel, Wajda, Visconti, Fellini, Pasolini, the Coen brothers, Lynch, etc. etc.), I like to read (mainly non-fiction) and, of course, I enjoy watching TV series ('House of Cards', 'Succession', 'Fargo', 'The Sopranos', 'Twin Peaks', etc. etc.)."
+  'about.music': 'I am musically polyamorous :), my list of favorite musicians is very long and includes: Swans, Sonic Youth, Armia, Crass, Neurosis, Killing Joke, The Cure, New Model Army, Izrael, Vangelis, Depeche Mode, Massive Attack, Godflesh, Discharge, David Bowie, Brian Eno, Brygada Kryzys, Portishead, Dead Can Dance, Black Uhuru, Public Image Limited, Conflict, Henryk Mikołaj Górecki, Siekiera, Cocteau Twins, Joy Division, Fugazi, Bad Brains, and many, many others.',
+  'about.film': "I enjoy cinema (Buñuel, Wajda, Visconti, Fellini, Pasolini, the Coen brothers, Lynch, and many others). I also like reading, mainly non-fiction, although I grew up rading authors like Philip K. Dick and Kurt Vonnegut. And, of course, I enjoy watching TV series such as House of Cards, Succession, Fargo, The Sopranos, and Twin Peaks.",
+  'projects.viewProject':'View project',
+  'projects.backToProjects': 'Back to projects',
+  'projects.liveWebsite': 'Visit website'
  },
  es: {
   'nav.about': 'Sobre mí',
@@ -54,7 +57,7 @@ export const ui = {
   'experience.position.selfemployed': 'Webmaster',
   'experience.description.selfemployed': 'Creación de sitios web y primeros proyectos frontend con HTML, CSS y JavaScript vanilla.',
   'about.hobbies': '		I am interested in social issues and politics. I am a vegetarian and an animal lover(I share my life with two Andalusian Bodeguero dogs: Yoko & Sugus < 3).I am a cyclist and a nature enthusiast.I enjoy traveling outside the city and spending nights surrounded by nature in my small van.',
-  'about.music': 'I am musically polyamorous :), my list of favorite musicians is very long and includes: Swans, Sonic Youth, Armia, Crass, Neurosis, Killing Joke, The Cure, New Model Army, Izrael, Vangelis, Depeche Mode, Massive Attack, Godflesh, Discharge, David Bowie, Brian Eno, Brygada Kryzys, Portishead, Black Uhuru, Tricky, Public Image Limited, Conflict, Henryk Mikołaj Górecki, Chumbawamba, Siekiera, Cocteau Twins, Joy Division, Fugazi, Bad Brains, and many, many others.',
+  'about.music': 'I am musically polyamorous :), my list of favorite musicians is very long and includes: Swans, Armia, Crass, Neurosis, Killing Joke, The Cure, Sonic Youth, New Model Army, Izrael, Vangelis, Depeche Mode, Massive Attack, Godflesh, Discharge, David Bowie, Brian Eno, Brygada Kryzys, Portishead, Black Uhuru, Tricky, Public Image Limited, Conflict, Henryk Mikołaj Górecki, Chumbawamba, Siekiera, Cocteau Twins, Joy Division, Fugazi, Bad Brains, and many, many others.',
   'about.film': "I enjoy cinema (Buñuel, Wajda, Visconti, Fellini, Pasolini, the Coen brothers, Lynch, etc. etc.), I like to read (mainly non-fiction) and, of course, I enjoy watching TV series ('House of Cards', 'Succession', 'Fargo', 'The Sopranos', 'Twin Peaks', etc. etc.)."
 
  }

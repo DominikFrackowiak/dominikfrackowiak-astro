@@ -1,20 +1,23 @@
 ---
 title: Marta Sieczkowska Portfolio
+subtitle: Piękny design przełożony na kod
 lang: pl
 key: marta-sieczkowska
-description: Temporary case study placeholder for a personal portfolio website focused on visual identity, responsive layout, and content presentation.
+shortDescription: Minimalistyczne portfolio ilustratorki i graficzki Marty Sieczkowskiej, zbudowane w Next.js i oparte na Headless WordPress CMS.
+longDescription: Marta Sieczkowska jest wyjątkowo utalentowaną ilustratorką i graficzką. Miałem przyjemność przełożyć jej precyzyjny kierunek kreatywny na minimalistyczną stronę portfolio. Projekt wymagał pełnej kontroli nad warstwą frontendową, a jednocześnie Marta potrzebowała CMS-a do wygodnego zarządzania treścią. Zbudowałem stronę w Next.js i połączyłem ją z Headless WordPress API, dzięki czemu projekt zyskał znajomy backend bez ograniczeń narzucanych przez gotowe szablony.
 slug: marta-sieczkowska
 image:
   - src/assets/images/projects/marta-sieczkowska-home.webp
   - src/assets/images/projects/marta-sieczkowska-detail.webp
 url: 'https://martasieczkowska.com'
 tags:
-  - Astro
-  - Portfolio
-  - Web design
+  - react.js
+  - next.js
+  - headless cms
+  - headless wordpress
+  - wordpress
 ---
 
 # MARTA SIECZKOWSKA - PORTFOLIO
 
-Dummy project content. Replace this with the real case study, process notes,
-screenshots, and implementation details when the project page is ready.
+Marta Sieczkowska jest wyjątkowo utalentowaną ilustratorką i graficzką. Miałem przyjemność przełożyć jej precyzyjny kierunek kreatywny na minimalistyczną stronę portfolio. Projekt wymagał pełnej kontroli nad warstwą frontendową, a jednocześnie Marta potrzebowała CMS-a do wygodnego zarządzania treścią. Zbudowałem stronę w Next.js i połączyłem ją z Headless WordPress API, dzięki czemu projekt zyskał znajomy backend bez ograniczeń narzucanych przez gotowe szablony.

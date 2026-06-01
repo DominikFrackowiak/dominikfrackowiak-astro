@@ -4,8 +4,6 @@ import { getCollection } from 'astro:content'
 import { Image } from 'astro:assets'
 import Layout from '@/layouts/Layout.astro'
 import Button from '@/components/atoms/button.astro'
-import HeadingTextBlock from '@/components/organisms/heading-text-block.astro'
-import CenteringWrapper from '@/components/atoms/centering-wrapper.astro'
 import CloseIcon from '@/components/atoms/icons/close-icon.astro'
 
 const projectImageModules = import.meta.glob<{ default: ImageMetadata }>(
@@ -29,9 +27,17 @@ const { project } = Astro.props
 const projectImages = project.data.image
 	.map(imagePath => projectImageModules[`/${imagePath}`]?.default)
 	.filter((image): image is ImageMetadata => image !== undefined)
+const longDescriptionBlocks = project.data.longDescription
+	.split(/\n{2,}/)
+	.map(block => block.trim())
+	.filter(Boolean)
 ---
 
-<Layout title={project.data.title} heading={project.data.title}>
+<Layout
+	title={project.data.title}
+	heading={project.data.title}
+	subHeading={project.data.subtitle}
+>
 	<Button
 		as='a'
 		variant='go-back'
@@ -43,33 +49,24 @@ const projectImages = project.data.image
 	</Button>
 
 	<article class='flex flex-col lg:flex-row justify-between gap-20 max-w-none'>
-		<div class='flex flex-col gap-6 w-full max-w-140 order-1 lg:order-0'>
-			{
-				projectImages.map(image => (
-					<Image
-						src={image}
-						alt={`Illustration from the ${project.data.title} project`}
-						class='project-image w-full h-auto cursor-pointer'
-						transition:name='image'
-					/>
-				))
-			}
-		</div>
-
-		<div class='flex flex-col flex-1 gap-16 max-w-113.75 order-0 lg:order-1'>
+		<div class='flex flex-col flex-1 gap-16'>
 			<div class='flex flex-col gap-5 text-dark/80 dark:text-light/70'>
-				<p>{project.data.description}</p>
+				{longDescriptionBlocks.map(block => <p>{block}</p>)}
 			</div>
 			<div class='flex flex-col gap-2'>
 				{
 					project.data.url ? (
-						<a
-							href={project.data.url}
-							target='_blank'
-							class='text-md! text-light/80!'
-						>
-							{project.data.url}
-						</a>
+					
+							<Button
+		as='a'
+		variant='go-back'
+		href={project.data.url}
+		slot='title-waves'
+		className='text-dark dark:text-light/80!'
+  target='_blank'
+	>
+		&rarr;
+	</Button>
 					) : null
 				}
 				<ul class='flex flex-wrap gap-2 text-md! text-light!'>
@@ -81,19 +78,31 @@ const projectImages = project.data.image
 				</ul>
 			</div>
 		</div>
+		<div class='flex flex-col gap-6 w-full max-w-80'>
+			{
+				projectImages.map(image => (
+					<Image
+						src={image}
+						alt={`Illustration from the ${project.data.title} project`}
+						class='project-image w-full h-auto cursor-pointer'
+						transition:name='image'
+					/>
+				))
+			}
+		</div>
 		<!-- <Content /> -->
 	</article>
 
 	<!-- </HeadingTextBlock> -->
 	<div
-		class='fixed inset-0 z-60 overflow-y-auto hidden min-h-screen bg-light'
+		class='fixed inset-0 mt-17! z-100 overflow-y-auto hidden min-h-screen bg-light'
 		id='full-image-modal'
 	>
 		<button
 			id='full-image-close'
 			type='button'
 			aria-label='Close full image'
-			class='fixed top-10 right-10 z-70 bg-light/30 text-dark rounded-full p-2 cursor-pointer'
+			class='fixed top-20 right-10 z-70 bg-light/40 text-dark rounded-full p-2 cursor-pointer'
 		>
 			<CloseIcon />
 		</button>
