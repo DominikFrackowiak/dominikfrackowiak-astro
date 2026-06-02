@@ -12,8 +12,9 @@ longDescription: |
   After listening, participants could share their reflections through a comment form. The submitted comments were stored in a database and visualized as a dynamic word cloud, highlighting the terms that appeared most frequently across all responses.
 
   The original application was built with HTML, SCSS, vanilla JavaScript, and a small amount of React. More recently, I rebuilt it using Astro.js, React.js, TypeScript, and Tailwind CSS, making the project easier to maintain while improving performance and keeping it lightweight.
-metaDescription: ''
+metaDescription: 'Interactive web application created for Medialab Matadero and collaborating institutions, combining audio storytelling, participant feedback, and dynamic word cloud visualization around social issues such as migration, education, healthcare, and housing.'
 slug: realidades-caleidoscopicas
+url: https://realidadescaleidoscopicas-astro.vercel.app/
 image:
   - src/assets/images/projects/realidades-caleidoscopicas.png
 tags:

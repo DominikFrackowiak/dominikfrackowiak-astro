@@ -43,14 +43,22 @@ const projectsWithThumbnails = projects.map(project => ({
 					headingClassName='no-underline!'
 					className='gap-4 order-1 md:order-0'
 				>
-					<div class='flex flex-col gap-2.5'>
+					<div class='flex flex-col gap-4 lg:gap-2.5'>
 						<p>{item.data.shortDescription.slice(0, 80)}...</p>
+						<div
+							class='flex lg:hidden w-40 h-40 shrink-0 bg-cover bg-start md:bg-center order-0 md:order-1 bg-no-repeat'
+							style={
+								item.thumbnailUrl
+									? `background-image: url('${item.thumbnailUrl}')`
+									: undefined
+							}
+						/>
 						<Button variant='go-back' className='self-start'>
 							{t('projects.viewProject')} &rarr;
 						</Button>
 					</div>
 					<div class='flex gap-2'>
-						<ul class='flex gap-2 text-dark/80 dark:text-light/60 text-md! font-light'>
+						<ul class='flex gap-2 text-dark/80 dark:text-light/60 text-md! font-light flex-wrap'>
 							{item.data.tags.map(el => (
 								<li>{el}</li>
 							))}
@@ -58,7 +66,7 @@ const projectsWithThumbnails = projects.map(project => ({
 					</div>
 				</HeadingTextBlock>
 				<div
-					class='w-full h-45 md:w-20 md:h-20 shrink-0 bg-cover bg-start md:bg-center order-0 md:order-1 bg-no-repeat'
+					class='hidden lg:flex w-full h-45 md:w-20 md:h-20 shrink-0 bg-cover bg-start md:bg-center order-0 md:order-1 bg-no-repeat'
 					style={
 						item.thumbnailUrl
 							? `background-image: url('${item.thumbnailUrl}')`

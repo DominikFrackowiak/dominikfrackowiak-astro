@@ -1,11 +1,11 @@
 ---
 import { cn } from '@/utils/cn'
-import Waves from '../atoms/waves.astro'
+import Waves from '../atoms/waves-2.astro'
 import Heading from '../atoms/heading.astro'
 
 const variants = {
-	full: 'min-h-40 md:min-h-80',
-	small: 'h-28',
+	full: 'min-h-56 md:min-h-80',
+	small: 'h-36 md:h-28',
 } as const
 
 type Variant = keyof typeof variants
@@ -30,15 +30,19 @@ const Tag = as
 ---
 
 <div
-	class={cn('relative top-16.5 left-0 w-full', variants[variant], className)}
+	class={cn(
+		'relative top-16.5 left-0 w-full overflow-hidden lg:my-0 py-20! ',
+		variants[variant],
+		className
+	)}
 >
-	<Waves class='absolute top-0 left-0 h-full w-full' />
+	<Waves class='absolute inset-0 h-full w-full text-dark dark:text-accent' />
 
 	<div
-		class='flex justify-end items-center absolute top-0 left-0 h-full w-full bg-linear-to-b from-transparent to-light dark:to-dark'
+		class='flex justify-end items-center absolute top-0 left-0 h-full w-full bg-linear-to-b from-light/80 dark:from-dark/60 to-light dark:to-dark'
 	>
 		<div
-			class='flex flex-col justify-center items-start w-full max-w-6xl mx-auto h-full px-4 gap-4'
+			class='flex flex-col justify-center items-start w-full max-w-6xl mx-auto h-full px-4 gap-4 py-16!'
 		>
 			{
 				heading && (

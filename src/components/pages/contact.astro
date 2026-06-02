@@ -50,9 +50,13 @@ const homeUrl = `/${locale}`
 					<label for='message'>{t('contact.form.message')}</label>
 					<textarea name='message' required id='message'></textarea>
 				</div>
-				<!-- <div class='h-19.5 w-76 origin-top-left scale-[0.7]'>
-			<div class='h-captcha h-full' data-captcha='true'></div>
-		</div> -->
+				<div
+					id='captcha-wrapper'
+					class='h-[78px] max-h-0 w-[304px] origin-top-left scale-[0.7] overflow-hidden opacity-0 pointer-events-none transition-opacity'
+					aria-hidden='true'
+				>
+					<div class='h-captcha h-full' data-captcha='true'></div>
+				</div>
 
 				<Button type='submit' className='mt-4'>{t('contact.form.cta')}</Button>
 			</form>
@@ -106,9 +110,11 @@ const homeUrl = `/${locale}`
 </Layout>
 
 <!-- -- Step 2: Add the Web3Forms script ---->
-<script src='https://web3forms.com/client/script.js' async defer></script>
+<script src='https://web3forms.com/client/script.js' async defer is:inline></script>
 <script>
 	const form = document.querySelector<HTMLFormElement>('#contact')
+	const messageInput = document.querySelector<HTMLTextAreaElement>('#message')
+	const captchaWrapper = document.querySelector<HTMLElement>('#captcha-wrapper')
 	const successModal = document.querySelector<HTMLElement>(
 		'#contact-success-modal'
 	)
@@ -120,12 +126,36 @@ const homeUrl = `/${locale}`
 		successModal?.removeAttribute('hidden')
 	}
 
+	messageInput?.addEventListener('input', function () {
+		const shouldShowCaptcha = Boolean(messageInput.value.trim())
+
+		captchaWrapper?.classList.toggle('max-h-0', !shouldShowCaptcha)
+		captchaWrapper?.classList.toggle('opacity-0', !shouldShowCaptcha)
+		captchaWrapper?.classList.toggle('pointer-events-none', !shouldShowCaptcha)
+		captchaWrapper?.classList.toggle('max-h-[78px]', shouldShowCaptcha)
+		captchaWrapper?.removeAttribute('aria-hidden')
+
+		if (!shouldShowCaptcha) {
+			captchaWrapper?.setAttribute('aria-hidden', 'true')
+		}
+	})
+
 	form?.addEventListener('submit', function (e) {
+		if (!messageInput?.value.trim()) {
+			return
+		}
+
 		const captcha = form.querySelector<HTMLElement>('[data-captcha]')
 		const captchaFrame = captcha?.querySelector('iframe')
 		const captchaResponse = form.querySelector<HTMLTextAreaElement>(
 			'textarea[name="h-captcha-response"]'
 		)
+
+		if (!captcha) {
+			e.preventDefault()
+			alert('Captcha is unavailable. Please refresh the page and try again.')
+			return
+		}
 
 		if (!captchaFrame) {
 			e.preventDefault()

@@ -13,7 +13,8 @@ longDescription: |
 
   La aplicación original se construyó con HTML, SCSS, JavaScript vanilla y una pequeña parte de React. Más recientemente la reconstruí con Astro.js, React.js, TypeScript y Tailwind CSS, haciendo que el proyecto sea más fácil de mantener, más eficiente y siga siendo ligero.
 slug: realidades-caleidoscopicas
-metaDescription: ''
+metaDescription: 'Aplicación web interactiva creada para Medialab Matadero y diversas instituciones colaboradoras, que combina narrativas en audio, participación ciudadana y visualización dinámica de palabras sobre temas como migración, educación, sanidad y vivienda.'
+url: https://realidadescaleidoscopicas-astro.vercel.app/
 image:
   - src/assets/images/projects/realidades-caleidoscopicas.png
 tags:

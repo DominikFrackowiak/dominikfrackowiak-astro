@@ -4,7 +4,7 @@ lang: pl
 key: react-pdf-with-next-js
 description: Jak generować, wyświetlać i pobierać dynamiczne pliki PDF w aplikacji Next.js z użyciem React-PDF.
 slug: react-pdf-with-next-js
-metaDescription: ''
+metaDescription: Praktyczny przewodnik po generowaniu, podglądzie i pobieraniu plików PDF w aplikacjach Next.js z wykorzystaniem React-PDF. Omówienie struktury dokumentów, stylowania, rejestracji fontów oraz najczęstszych problemów konfiguracyjnych.
 tags:
   - Next.js
   - React-PDF
@@ -33,15 +33,15 @@ Podstawowe elementy, z których budujemy dokument PDF, to `Document`, `Page`, `V
 
 ```tsx
 import {
-  Document,
-  Page,
-  View,
-  Text,
-  Image,
-  PDFViewer,
-  StyleSheet,
-  Font,
-} from '@react-pdf/renderer';
+	Document,
+	Page,
+	View,
+	Text,
+	Image,
+	PDFViewer,
+	StyleSheet,
+	Font,
+} from '@react-pdf/renderer'
 ```
 
 To są główne klocki, z których składasz PDF. `View` działa podobnie do `diva`, ale pamiętaj, że React-PDF nie renderuje zwykłych elementów HTML wewnątrz dokumentu.
@@ -50,13 +50,13 @@ Fonty, których chcesz używać w PDF-ie, trzeba najpierw zarejestrować:
 
 ```tsx
 Font.register({
-  family: 'Roboto',
-  fonts: [
-    { src: '/assets/fonts/Roboto-Regular.ttf', fontWeight: 400 },
-    { src: '/assets/fonts/Roboto-Medium.ttf', fontWeight: 500 },
-    { src: '/assets/fonts/Roboto-Bold.ttf', fontWeight: 700 },
-  ],
-});
+	family: 'Roboto',
+	fonts: [
+		{ src: '/assets/fonts/Roboto-Regular.ttf', fontWeight: 400 },
+		{ src: '/assets/fonts/Roboto-Medium.ttf', fontWeight: 500 },
+		{ src: '/assets/fonts/Roboto-Bold.ttf', fontWeight: 700 },
+	],
+})
 ```
 
 ## Struktura dokumentu
@@ -65,16 +65,16 @@ Struktura dokumentu może wyglądać tak:
 
 ```tsx
 const PDF = () => {
-  return (
-    <Document>
-      <Page>
-        <View>
-          <Text>Treść dokumentu</Text>
-        </View>
-      </Page>
-    </Document>
-  );
-};
+	return (
+		<Document>
+			<Page>
+				<View>
+					<Text>Treść dokumentu</Text>
+				</View>
+			</Page>
+		</Document>
+	)
+}
 ```
 
 Jak wspomniałem wcześniej, `View` jest odpowiednikiem kontenera. Możesz tworzyć tyle elementów `View`, ile potrzebujesz, i zagnieżdżać je w zależności od układu dokumentu.
@@ -84,8 +84,10 @@ Jak wspomniałem wcześniej, `View` jest odpowiednikiem kontenera. Możesz tworz
 Elementy możesz stylować inline:
 
 ```tsx
-<View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-  <Text>Treść</Text>
+<View
+	style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}
+>
+	<Text>Treść</Text>
 </View>
 ```
 
@@ -95,14 +97,14 @@ Druga, czytelniejsza opcja to `StyleSheet.create`:
 
 ```tsx
 const styles = StyleSheet.create({
-  imageWrapper: {
-    marginLeft: 20,
-  },
-});
+	imageWrapper: {
+		marginLeft: 20,
+	},
+})
 
-<View style={styles.imageWrapper}>
-  <Image src="/assets/example.png" />
-</View>;
+;<View style={styles.imageWrapper}>
+	<Image src='/assets/example.png' />
+</View>
 ```
 
 ## PDF na stronie
@@ -111,26 +113,26 @@ const styles = StyleSheet.create({
 
 ```tsx
 const PDFView = () => {
-  return (
-    <PDFViewer>
-      <PDF />
-    </PDFViewer>
-  );
-};
+	return (
+		<PDFViewer>
+			<PDF />
+		</PDFViewer>
+	)
+}
 
-export default PDFView;
+export default PDFView
 ```
 
 Następnie zaimportuj ten komponent dynamicznie na stronie, na której PDF ma być widoczny:
 
 ```tsx
-'use client';
+'use client'
 
-import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic'
 
 const InvoicePDF = dynamic(() => import('./pdf'), {
-  ssr: false,
-});
+	ssr: false,
+})
 ```
 
 Opcja `ssr: false` jest w Next.js ważna. React-PDF potrzebuje API dostępnych w przeglądarce, więc viewer powinien renderować się po stronie klienta.
@@ -139,11 +141,11 @@ Później używasz `InvoicePDF` jak każdego innego komponentu Reactowego:
 
 ```tsx
 export default function PDFPage() {
-  return (
-    <div className={styles.pdfWrapper}>
-      <InvoicePDF locale={locale} />
-    </div>
-  );
+	return (
+		<div className={styles.pdfWrapper}>
+			<InvoicePDF locale={locale} />
+		</div>
+	)
 }
 ```
 
@@ -153,19 +155,19 @@ Jeśli zamiast podglądu PDF-a albo obok niego chcesz dodać przycisk pobierania
 
 ```tsx
 const PDFDownloadLink = dynamic(
-  () => import('@react-pdf/renderer').then((mod) => mod.PDFDownloadLink),
-  { ssr: false }
-);
+	() => import('@react-pdf/renderer').then(mod => mod.PDFDownloadLink),
+	{ ssr: false }
+)
 ```
 
 Następnie owiń swój przycisk komponentem `PDFDownloadLink`:
 
 ```tsx
 <PDFDownloadLink
-  document={<PDF locale={locale} />}
-  fileName={`DominikFrackowiak_CV_${locale}.pdf`}
+	document={<PDF locale={locale} />}
+	fileName={`DominikFrackowiak_CV_${locale}.pdf`}
 >
-  <button className={className}>{handleTranslation(locale)}</button>
+	<button className={className}>{handleTranslation(locale)}</button>
 </PDFDownloadLink>
 ```
 
