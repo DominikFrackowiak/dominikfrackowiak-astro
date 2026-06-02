@@ -12,9 +12,9 @@ export const ui = {
   'nav.contact': 'Contact',
   'nav.projects': 'Projects',
   'nav.blog': 'Blog',
-  'hero.hello1': "Hi! I'm Dominik Frackowiak, a frontend developer based in Madrid",
-  'hero.hello2': "Here you'll find selected projects, technical notes, and experiments focused on modern web development.",
-  'hero.hello3': 'Currently working with Astro, React, TypeScript and Next.js. Did I mention Astro?',
+  'hero.hello1': "Hi! I'm Dominik Frąckowiak.",
+  'hero.hello2': "I turn design into code using Astro, React, TypeScript and Next.js.",
+  'hero.hello3': "Here you'll find projects, technical notes and personal experiments.",
   'hero.btn.contact': 'Contact me',
   'hero.btn.viewProjects': 'View projects',
   'home.metadescription': 'Portfolio of Dominik Frąckowiak, a frontend developer based in Madrid. Projects, technical notes, and experiments focused on React, Astro, TypeScript, and modern web development.',
@@ -69,9 +69,9 @@ export const ui = {
   'nav.projects': 'Proyectos',
   'nav.blog': 'Blog',
 
-  'hero.hello1': '¡Hola! Soy Dominik Frackowiak, desarrollador frontend afincado en Madrid.',
-  'hero.hello2': 'Aquí encontrarás una selección de proyectos, notas técnicas y experimentos centrados en el desarrollo web moderno.',
-  'hero.hello3': 'Actualmente trabajo con Astro, React, TypeScript y Next.js. ¿He mencionado ya Astro?',
+  'hero.hello1': '¡Hola! Soy Dominik Frąckowiak.',
+  'hero.hello2': 'Transformo diseño en código utilizando Astro, React, TypeScript y Next.js.',
+  'hero.hello3': 'Este sitio reúne proyectos, notas técnicas y experimentos personales.',
 
   'hero.btn.contact': 'Contactar',
   'hero.btn.viewProjects': 'Ver proyectos',
@@ -147,9 +147,9 @@ export const ui = {
   'nav.projects': 'Projekty',
   'nav.blog': 'Blog',
 
-  'hero.hello1': 'Cześć! Nazywam się Dominik Frackowiak i jestem frontend developerem mieszkającym w Madrycie.',
-  'hero.hello2': 'Znajdziesz tutaj wybrane projekty, notatki techniczne oraz eksperymenty związane z nowoczesnym web developmentem.',
-  'hero.hello3': 'Obecnie pracuję z Astro, Reactem, TypeScriptem i Next.js. Wspominałem już o Astro?',
+  'hero.hello1': 'Cześć! Jestem Dominik Frąckowiak.',
+  'hero.hello2': 'Przekładam design na kod, wykorzystując Astro, React, TypeScript i Next.js.',
+  'hero.hello3': 'Na tej stronie znajdziesz projekty, notatki techniczne i osobiste eksperymenty.',
 
   'hero.btn.contact': 'Skontaktuj się ze mną',
   'hero.btn.viewProjects': 'Zobacz projekty',

@@ -11,10 +11,17 @@ interface Props {
 	copy1: string
 	copy2: string
 	copy3: string
+	locale?: 'es' | 'en' | 'pl'
 }
 
-const { contactButtonContent, viewProjectsButtonContent, copy1, copy2, copy3 } =
-	Astro.props
+const {
+	contactButtonContent,
+	viewProjectsButtonContent,
+	copy1,
+	copy2,
+	copy3,
+	locale = 'en',
+} = Astro.props
 ---
 
 <section
@@ -37,7 +44,7 @@ const { contactButtonContent, viewProjectsButtonContent, copy1, copy2, copy3 } =
 			<Image
 				src={portrait}
 				alt="Dominik's Frackowiak portrait"
-				class='h-34 lg:h-48 w-34 lg:w-48 rounded-full lg:mt-8'
+				class='h-34 lg:h-48 w-34 lg:w-48 rounded-full lg:mt-2'
 			/>
 		</div>
 		<div class='flex flex-col gap-6 w-full lg:w-3/5 pt-5'>
@@ -50,10 +57,10 @@ const { contactButtonContent, viewProjectsButtonContent, copy1, copy2, copy3 } =
 			</p>
 
 			<div class='flex w-full gap-3 justify-start lg:justify-end'>
-				<Button as='a' variant='regular' href='/es/contact'
+				<Button as='a' variant='regular' href=`/${locale}/contact`
 					>{contactButtonContent}</Button
 				>
-				<Button as='a' variant='cta' href='/es/projects'
+				<Button as='a' variant='cta' href=`/${locale}/projects`
 					>{viewProjectsButtonContent}</Button
 				>
 			</div>
