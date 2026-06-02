@@ -36,7 +36,7 @@ const homeUrl = `/${locale}`
 				<input
 					type='hidden'
 					name='access_key'
-					value={import.meta.env.PUBLIC_WEB3FORMS_KEY}
+					value='41f350b3-5136-4874-b27a-0ca2749bf60a'
 				/>
 				<div class='flex flex-col gap-2 w-full'>
 					<label for='name'>{t('contact.form.name')}</label>
@@ -110,7 +110,8 @@ const homeUrl = `/${locale}`
 </Layout>
 
 <!-- -- Step 2: Add the Web3Forms script ---->
-<script src='https://web3forms.com/client/script.js' async defer is:inline></script>
+<script src='https://web3forms.com/client/script.js' async defer is:inline
+></script>
 <script>
 	const form = document.querySelector<HTMLFormElement>('#contact')
 	const messageInput = document.querySelector<HTMLTextAreaElement>('#message')
