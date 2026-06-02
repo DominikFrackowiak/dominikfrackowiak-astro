@@ -83,16 +83,29 @@ const {
 		})
 	}
 
+	function closeDropdownsOnOutsideClick(event: MouseEvent) {
+		if (
+			event.target instanceof Element &&
+			event.target.closest('[data-dropdown]')
+		) {
+			return
+		}
+
+		closeDropdowns()
+	}
+
 	if (document.documentElement.dataset.dropdownsGlobalBound !== 'true') {
 		document.documentElement.dataset.dropdownsGlobalBound = 'true'
 
-		document.body.addEventListener('click', closeDropdowns)
+		document.addEventListener('click', closeDropdownsOnOutsideClick)
 
-		document.body.addEventListener('keydown', event => {
+		document.addEventListener('keydown', event => {
 			if (event.key === 'Escape') {
 				closeDropdowns()
 			}
 		})
+
+		document.addEventListener('astro:before-swap', closeDropdowns)
 	}
 
 	initDropdowns()

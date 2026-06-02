@@ -21,7 +21,7 @@
 	--tracking-heading-one: 3.5px;
 	--text-p: 18px;
 	--text-list: 17px;
-	--text-hero: 18px;
+	--text-hero: 17px;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -73,6 +73,7 @@ input:-webkit-autofill:focus {
 	transition: background-color 9999s ease-in-out 0s;
 }
 
-article h1, h2{
+article h1,
+h2 {
 	@apply text-dark uppercase dark:text-light font-light tracking-heading text-xl;
 }

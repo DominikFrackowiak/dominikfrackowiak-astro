@@ -4,20 +4,33 @@
 </div>
 
 <script>
-	document.addEventListener('DOMContentLoaded', () => {
-		const scrollIndicator = document.querySelector('.scroll-indicator') as HTMLElement
+	function updateScrollIndicators() {
+		const scrollIndicators = document.querySelectorAll('.scroll-indicator')
+		const documentHeight =
+			document.documentElement.scrollHeight - window.innerHeight
+		const scrollProgress =
+			documentHeight > 0 ? (window.scrollY / documentHeight) * 100 : 0
 
-		if (!scrollIndicator) return
-
-		document.addEventListener('scroll', () => {
-			const scrollTop = window.scrollY
-
-			const documentHeight =
-				document.documentElement.scrollHeight - window.innerHeight
-
-			const scrollProgress = (scrollTop / documentHeight) * 100
-
-			scrollIndicator.style.width = `${scrollProgress}%`
+		scrollIndicators.forEach(scrollIndicator => {
+			if (scrollIndicator instanceof HTMLElement) {
+				scrollIndicator.style.width = `${scrollProgress}%`
+			}
 		})
-	})
+	}
+
+	function initScrollIndicator() {
+		updateScrollIndicators()
+
+		if (document.documentElement.dataset.scrollIndicatorBound === 'true') {
+			return
+		}
+
+		document.documentElement.dataset.scrollIndicatorBound = 'true'
+		document.addEventListener('scroll', updateScrollIndicators, { passive: true })
+		window.addEventListener('resize', updateScrollIndicators)
+		document.addEventListener('astro:page-load', updateScrollIndicators)
+	}
+
+	initScrollIndicator()
+	document.addEventListener('astro:page-load', initScrollIndicator)
 </script>

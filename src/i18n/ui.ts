@@ -121,7 +121,7 @@ export const ui = {
   'about.film.title': 'Cine / Series / Libro',
   'about.film': 'Me apasiona el cine (Buñuel, Wajda, Visconti, Fellini, Pasolini, los hermanos Coen, Lynch y muchos otros). También me gusta leer, principalmente ensayo y no ficción, aunque crecí leyendo autores como Philip K. Dick y Kurt Vonnegut. Y, por supuesto, disfruto viendo series como House of Cards, Succession, Fargo, Los Soprano y Twin Peaks.',
 
-  'contact.title': 'CONTACTO',
+  'contact.title': 'Contacto',
   'contact.subHeading': 'NO DUDES EN ESCRIBIRME',
   'contact.metadescription': 'Ponte en contacto con Dominik Frąckowiak, desarrollador frontend afincado en Madrid. Puedes escribirme por correo electrónico, LinkedIn, GitHub, WhatsApp o mediante el formulario de contacto.',
 
@@ -198,7 +198,7 @@ export const ui = {
   'about.film.title': 'Filmy / Seriale / Książki',
   'about.film': 'Lubię kino (Buñuel, Wajda, Visconti, Fellini, Pasolini, bracia Coen, Lynch i wielu innych). Chętnie czytam, głównie literaturę faktu, choć dorastałem przy książkach takich autorów jak Philip K. Dick czy Kurt Vonnegut. Oczywiście lubię też seriale, takie jak House of Cards, Sukcesja, Fargo, Rodzina Soprano czy Twin Peaks.',
 
-  'contact.title': 'KONTAKT',
+  'contact.title': 'Kontakt',
   'contact.subHeading': 'ZAPRASZAM DO KONTAKTU',
 
   'contact.form.name': 'Imię',
