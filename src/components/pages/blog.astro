@@ -37,7 +37,7 @@ const blog = await getCollection('blog', ({ data }) => data.lang === lang)
 						{/* {item.data.tags.map(tag => (
 							<Button variant='simple'>{tag}</Button>
 						))} */}
-						<ul class='flex gap-2 text-dark/80 dark:text-light/60 text-md! font-light'>
+						<ul class='flex gap-2 text-accent-2 dark:text-light/60 text-md! font-semibold flex-wrap'>
 							{item.data.tags?.map(el => (
 								<li>{el}</li>
 							))}

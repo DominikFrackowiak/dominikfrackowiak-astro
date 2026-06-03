@@ -3,15 +3,24 @@ interface Props {
 	class?: string
 	animated?: boolean
 	strokeWidth?: number | string
-	lineGapScale?: number
+	lineGapScale?: number | string
 }
 
 const {
 	class: className,
 	animated = false,
 	strokeWidth = 1,
-	lineGapScale = 1,
+	lineGapScale,
 } = Astro.props
+
+const style = [
+	`--waves-2-stroke-width: ${strokeWidth}`,
+	lineGapScale !== undefined
+		? `--waves-2-line-gap-scale: ${lineGapScale}`
+		: undefined,
+]
+	.filter(Boolean)
+	.join('; ')
 ---
 
 <svg
@@ -22,7 +31,7 @@ const {
 	viewBox='0 0 793.75 413.41'
 	preserveAspectRatio='xMidYMid slice'
 	class:list={[className, { 'waves-2-animated': animated }]}
-	style={`--waves-2-stroke-width: ${strokeWidth}; --waves-2-line-gap-scale: ${lineGapScale};`}
+	style={style}
 >
 	<defs>
 		<linearGradient
@@ -66,7 +75,7 @@ const {
 	.waves-2-lines-scale {
 		transform-box: fill-box;
 		transform-origin: center;
-		scale: 1 var(--waves-2-line-gap-scale);
+		scale: 1 var(--waves-2-line-gap-scale, 1);
 	}
 
 	.waves-2-animated {

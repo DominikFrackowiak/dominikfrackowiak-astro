@@ -72,10 +72,10 @@ const longDescriptionBlocks = project.data.longDescription
 						</Button>
 					) : null
 				}
-				<ul class='flex flex-wrap gap-2 text-md! text-light!'>
+				<ul class='flex gap-2 text-accent-2 dark:text-light/60 text-md! font-semibold flex-wrap'>
 					{
 						project.data.tags.map(tag => (
-							<li class='text-md! text-light/60!'>{tag}</li>
+							<li>{tag}</li>
 						))
 					}
 				</ul>

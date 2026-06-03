@@ -24,13 +24,13 @@ export const ui = {
   'experience.description.softcollie': 'Co-developing an ERP application',
   'experience.company.alten': '2025 — ALTEN',
   'experience.position.alten': 'Frontend Developer',
-  'experience.description.alten': 'Worked on a project for a major company in the entertainment industry. Developed a ticket purchasing flow used by millions of users each year.',
+  'experience.description.alten': 'Developed a multi-step ticket purchasing flow in React and Astro for a major entertainment industry client, implementing various entry points, purchase scenarios, and business rules.',
   'experience.company.awakelab': '2024 — 2025 · AWAKELAB (part of Grupo Aspasia)',
   'experience.position.awakelab': 'Frontend Developer',
   'experience.description.awakelab': 'Developed landing pages and web applications using a range of technologies, from Astro.js to Bubble and Wix. Independently built an e-learning course catalog application based on Next.js and Supabase.',
   'experience.company.incloudforever': '2023 — 2024 · INCLOUDFOREVER',
   'experience.position.incloudforever': 'Junior Frontend Developer → Frontend Developer',
-  'experience.description.incloudforever': 'Developed components and pages in Next.js. Worked on purchasing flows and dynamic PDF document generation.',
+  'experience.description.incloudforever': 'Developed reusable Next.js components, marketing landing pages, and Stripe-based purchasing flows, including dynamic PDF generation for purchase confirmations.',
   'experience.company.selfemployed': 'Since 2019 — Web Development Projects',
   'experience.position.selfemployed': 'Webmaster',
   'experience.description.selfemployed': 'Created websites and early frontend projects using HTML, CSS and vanilla JavaScript.',
@@ -86,7 +86,7 @@ export const ui = {
 
   'experience.company.alten': '2025 — ALTEN',
   'experience.position.alten': 'Desarrollador Frontend',
-  'experience.description.alten': 'Trabajé en un proyecto para una importante empresa del sector del entretenimiento. Desarrollé un flujo de compra de entradas utilizado por millones de usuarios cada año.',
+  'experience.description.alten': 'Desarrollé un flujo de compra de entradas de varios pasos con React y Astro para un importante cliente del sector del entretenimiento, implementando distintos puntos de entrada, escenarios de compra y reglas de negocio.',
 
   'experience.company.awakelab': '2024 — 2025 · AWAKELAB (parte de Grupo Aspasia)',
   'experience.position.awakelab': 'Desarrollador Frontend',
@@ -94,7 +94,7 @@ export const ui = {
 
   'experience.company.incloudforever': '2023 — 2024 · INCLOUDFOREVER',
   'experience.position.incloudforever': 'Junior Frontend Developer → Frontend Developer',
-  'experience.description.incloudforever': 'Desarrollé componentes y páginas en Next.js. Trabajé en flujos de compra y generación dinámica de documentos PDF.',
+  'experience.description.incloudforever': 'Desarrollé componentes reutilizables en Next.js, landing pages de marketing y flujos de compra integrados con Stripe, incluyendo la generación dinámica de documentos PDF de confirmación de compra.',
 
   'experience.company.selfemployed': 'Desde 2019 — Proyectos de Desarrollo Web',
   'experience.position.selfemployed': 'Webmaster',
@@ -164,7 +164,7 @@ export const ui = {
 
   'experience.company.alten': '2025 — ALTEN',
   'experience.position.alten': 'Frontend Developer',
-  'experience.description.alten': 'Pracowałem przy projekcie dla dużej firmy z branży rozrywkowej. Tworzyłem proces zakupu biletów wykorzystywany każdego roku przez miliony użytkowników.',
+  'experience.description.alten': 'Tworzyłem wieloetapowy proces zakupu biletów w React i Astro dla dużego klienta z branży rozrywkowej, implementując różne ścieżki wejścia użytkownika, scenariusze zakupowe oraz reguły biznesowe.',
 
   'experience.company.awakelab': '2024 — 2025 · AWAKELAB (część Grupo Aspasia)',
   'experience.position.awakelab': 'Frontend Developer',
@@ -172,7 +172,7 @@ export const ui = {
 
   'experience.company.incloudforever': '2023 — 2024 · INCLOUDFOREVER',
   'experience.position.incloudforever': 'Junior Frontend Developer → Frontend Developer',
-  'experience.description.incloudforever': 'Tworzyłem komponenty i strony w Next.js. Pracowałem nad procesami zakupowymi oraz dynamicznym generowaniem dokumentów PDF.',
+  'experience.description.incloudforever': "Tworzyłem wielokrotnego użytku komponenty w Next.js, marketingowe landing page'e oraz procesy zakupowe zintegrowane ze Stripe, obejmujące dynamiczne generowanie potwierdzeń zakupu w formacie PDF.",
 
   'experience.company.selfemployed': 'Od 2019 — Projekty Web Development',
   'experience.position.selfemployed': 'Webmaster',

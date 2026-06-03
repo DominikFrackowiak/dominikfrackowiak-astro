@@ -12,10 +12,11 @@
 
 @theme {
 	--font-sans: 'Open Sans', ui-sans-serif, system-ui, sans-serif;
-	--color-darker: #1f1d1d;
-	--color-dark: #201e1e;
-	--color-light: #f9f8f8;
+	--color-dark: #1f1d1d;
+	--color-darker: #201e1e;
+	--color-light: #fbfafa;
 	--color-accent: #c94747;
+	--color-accent-2: #261B41;
 	--color-custom-gray: rgb(165, 164, 164);
 	--tracking-heading: 2.7px;
 	--tracking-heading-one: 3.5px;

@@ -3,6 +3,7 @@ import { useTranslations, getLangFromUrl } from '@/i18n/utils'
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 import Layout from '../../layouts/Layout.astro'
+import Waves from '../atoms/waves-2.astro'
 
 import HeadingTextBlock from '../organisms/heading-text-block.astro'
 import Technologies from '../organisms/technologies.astro'
@@ -31,4 +32,5 @@ import { experience } from '@/constants/experience'
 	<HeadingTextBlock headingText={t('languages.section.title')}>
 		<p>{t('languages')}</p>
 	</HeadingTextBlock>
+
 </Layout>

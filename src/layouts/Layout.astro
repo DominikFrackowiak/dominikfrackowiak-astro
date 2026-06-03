@@ -7,6 +7,7 @@ import Header from '@/components/organisms/header.astro'
 import Footer from '@/components/organisms/footer.astro'
 import Hero from '@/components/organisms/hero.astro'
 import TitleWaves from '@/components/organisms/title-waves.astro'
+import Waves from '@/components/atoms/waves-2.astro'
 
 const t = useTranslations(lang)
 
@@ -43,7 +44,9 @@ const {
 		<meta name='description' content={metadescription} />
 		<ClientRouter />
 	</head>
-	<body class='flex min-h-screen flex-col bg-light dark:bg-dark'>
+	<body
+		class='flex min-h-screen flex-col bg-light dark:bg-dark overflow-x-hidden'
+	>
 		<Header />
 		{
 			isHome ? (
@@ -67,14 +70,38 @@ const {
 		}
 		<main
 			class={cn(
-				'flex flex-col flex-1 gap-16 w-full max-w-6xl mx-auto px-4  mb-24 z-10',
+				'flex flex-col flex-1 gap-16 w-full max-w-6xl mx-auto px-4  mb-16 z-10',
 				isHome ? 'mt-4' : 'mt-16 md:mt-8',
 				className
 			)}
 		>
 			<slot />
 		</main>
-
+		<div
+			class={cn(
+				'relative bottom-0 left-0 right-0 z-0 h-40 w-full overflow-hidden',
+				isHome ? 'block' : 'hidden'
+			)}
+		>
+			<Waves
+				class={cn(
+					'absolute top-0 left-0 h-full w-full',
+					isHome
+						? 'text-accent-2 [--waves-2-line-gap-scale:3]'
+						: 'text-transparent h-0'
+				)}
+				strokeWidth={0.5}
+			/>
+			<div
+				class={cn(
+					'absolute top-0 left-0 z-5 h-full w-full bg-linear-to-b',
+					isHome
+						? 'from-light to-light/60 dark:from-transparent dark:to-transparent'
+						: 'from-dark/60 to-dark'
+				)}
+			>
+			</div>
+		</div>
 		<Footer />
 	</body>
 </html>
