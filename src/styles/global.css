@@ -23,6 +23,7 @@
 	--text-p: 18px;
 	--text-list: 17px;
 	--text-hero: 17px;
+	--text-heading-one: 22px;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
