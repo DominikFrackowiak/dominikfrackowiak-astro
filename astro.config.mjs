@@ -24,6 +24,6 @@ export default defineConfig({
     defaultLocale: 'en',
     locales: ['en', 'es', 'pl']
   },
-  site: 'https://dominikfrackowiak.com',
+  site,
   integrations: [sitemap()]
 });
