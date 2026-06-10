@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -10,8 +11,6 @@ const site = process.env.SITE_URL ?? 'https://dominikfrackowiak.com';
 
 // https://astro.build/config
 export default defineConfig({
-  site,
-
   vite: {
     plugins: [tailwindcss()],
     resolve: {
@@ -25,4 +24,6 @@ export default defineConfig({
     defaultLocale: 'en',
     locales: ['en', 'es', 'pl']
   },
+  site: 'https://dominikfrackowiak.com',
+  integrations: [sitemap()]
 });

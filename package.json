@@ -11,9 +11,12 @@
 		"host": "astro dev --host",
 		"build": "astro build",
 		"preview": "astro preview",
-		"astro": "astro"
+		"astro": "astro",
+		"new:project": "node scripts/new-content.mjs project",
+		"new:blog": "node scripts/new-content.mjs blog"
 	},
 	"dependencies": {
+		"@astrojs/sitemap": "^3.7.3",
 		"@tailwindcss/vite": "4.2.4",
 		"astro": "^6.3.1",
 		"clsx": "^2.1.1",
